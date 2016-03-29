@@ -1,8 +1,8 @@
 # SteganoJava
 
-Herramienta creada por los alumnos del Máster de Ingeniería Informática de la Universisdad Complutese de Madrid (UCM) para la asignatura Tecnologías Multimedia e Interacción (TMI) durante el curso 2015/16.
+Tool designed by students in the Master of Computer Engineering at the Universidad Complutense de Madrid (UCM) for the subject Tecnologías Multimedia e Interacción (TMI) during the course 2015/16. 
    
-## Autores:
+## Authors:
    
   * Jorge Casas Hernán
   * Mariano Hernández García
