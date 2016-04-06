@@ -1,0 +1,13 @@
+package tmi.mvc.View;
+
+import java.util.Vector;
+
+public interface View {
+    
+  public void updateUI();
+
+  public void showInfoMsg(String msg);
+
+  public void showErrorMsg(String msg);
+
+}

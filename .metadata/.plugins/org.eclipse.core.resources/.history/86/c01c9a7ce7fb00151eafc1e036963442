@@ -1,0 +1,17 @@
+package tmi.mvc.View;
+
+import java.util.Vector;
+
+import javax.sound.midi.ControllerEventListener;
+
+public interface View {
+
+  public Controller  myController;
+    
+  public void update();
+
+  public void showInfoMsg(String msg);
+
+  public void showErrorMsg(String msg);
+
+}

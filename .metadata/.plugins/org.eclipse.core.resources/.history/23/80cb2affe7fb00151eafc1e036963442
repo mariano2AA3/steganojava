@@ -1,0 +1,20 @@
+package tmi.mvc.View;
+
+public class MainWindow implements View {
+
+	public void updateUI() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void showInfoMsg(String msg) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void showErrorMsg(String msg) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

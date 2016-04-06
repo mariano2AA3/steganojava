@@ -1,0 +1,11 @@
+package tmi.mvc.View;
+
+public interface View {
+    
+  public void updateUI();
+
+  public void showInfoMsg(String msg);
+
+  public void showErrorMsg(String msg);
+
+}
