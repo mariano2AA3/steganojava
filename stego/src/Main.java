@@ -4,6 +4,7 @@ public class Main {
 	static bmp bmp;
 	
 	public static void main(String[] args) throws IOException {
-		bmp = new bmp();
+		String textoAOcultar = "Hello world, stegojava is here! Be ready for me!";
+		bmp = new bmp(textoAOcultar,"foto.bmp","saved.bmp");
 	}
 }
