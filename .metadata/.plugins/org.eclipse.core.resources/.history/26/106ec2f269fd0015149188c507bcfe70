@@ -1,0 +1,9 @@
+package tmi.steganojava.exceptions;
+
+public class ImgFormatException extends Exception {
+	
+	public ImgFormatException(String msg) {
+		super(msg);
+	}
+
+}

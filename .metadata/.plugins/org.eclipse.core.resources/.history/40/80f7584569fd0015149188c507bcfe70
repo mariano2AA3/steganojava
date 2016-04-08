@@ -1,0 +1,5 @@
+package tmi.steganojava.utils;
+
+public class ReadWriteFile {
+
+}

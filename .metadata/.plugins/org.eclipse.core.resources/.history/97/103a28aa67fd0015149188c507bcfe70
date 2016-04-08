@@ -1,0 +1,5 @@
+package tmi.steganojava.mvc.view;
+
+public class MainWindow {
+
+}

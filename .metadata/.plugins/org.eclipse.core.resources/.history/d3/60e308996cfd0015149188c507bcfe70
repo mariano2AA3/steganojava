@@ -1,0 +1,24 @@
+package tmi.steganojava.mvc.controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import tmi.steganojava.exceptions.ImgFormatException;
+
+public interface Controller {
+	
+	private ArrayList<String> imgFormats;
+	
+	/**
+	 * 
+	 * @param path
+	 * @return
+	 * @throws ImgFormatException
+	 */
+	public boolean isImgFormatCorrect(String path) throws ImgFormatException, IOException;
+	
+	
+	public float calculateImgEncodeAvaiableSize(String path) throws ImgFormatException, IOException;
+	
+
+}

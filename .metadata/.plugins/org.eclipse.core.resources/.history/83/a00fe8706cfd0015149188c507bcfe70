@@ -1,0 +1,9 @@
+package tmi.steganojava.mvc.controller;
+
+import tmi.steganojava.exceptions.ImgFormatException;
+
+public interface Controller {
+	
+	public boolean isImgFormatCorrect(String path) throws ImgFormatException;
+
+}

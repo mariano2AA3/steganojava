@@ -1,0 +1,23 @@
+package tmi.steganojava.stegoalgorithms;
+
+public class LsbBMP implements StegoAlgorithm {
+
+	@Override
+	public void encode() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void decode() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void getImgSpace() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

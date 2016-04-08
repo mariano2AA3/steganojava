@@ -1,0 +1,11 @@
+package tmi.steganojava.stegoalgorithms;
+
+public interface StegoAlgorithm {
+	
+	public void encode();
+	
+	public void decode();
+	
+	public void getSpace();
+
+}

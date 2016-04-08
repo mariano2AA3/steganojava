@@ -1,0 +1,20 @@
+package tmi.steganojava.utils;
+
+import java.io.File;
+
+import tmi.steganojava.exceptions.ImgFormatException;
+
+public class ReadWriteFile {
+	
+	public void readFile(String path) {
+		
+	}
+	
+	public void writeFile() throws ImgFormatException {
+		
+		if ( 1==1) {
+			throw new ImgFormatException();
+		}
+	}
+
+}
