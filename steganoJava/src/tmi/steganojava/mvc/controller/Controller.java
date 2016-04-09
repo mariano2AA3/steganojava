@@ -6,17 +6,27 @@ import java.util.ArrayList;
 
 import tmi.steganojava.exceptions.ImgFormatException;
 
-public interface Controller {
+public class Controller {
 	
-	public static ArrayList<String> imgFormatAdmitted = new ArrayList<String>();
+	private ArrayList<String> imgFormatAdmitted;
+	
+	public Controller() {
+		this.imgFormatAdmitted = new ArrayList<String>();
+		
+		// Add supported image format extentions
+		this.imgFormatAdmitted.add("bmp");
+	}
 		
 	/**
-	 * 
-	 * @param path
-	 * @return
-	 * @throws ImgFormatException
+	 * This function checks if the image path file contains a extension recognize by the application.
+	 * Now, there are recognized the following formats: BMP 
+	 * @param imgPath
+	 * @return true if imgPath contains a recognize format
 	 */
-	public boolean isImgFormatCorrect(String imgPath) throws ImgFormatException;
+	public boolean isImgFormatCorrect(String imgPath) {
+		String extention = imgPath.substring(imgPath.indexOf(".") + 1, imgPath.length());
+		return this.imgFormatAdmitted.contains(extention);
+	}
 	
 	
 	/**
@@ -27,23 +37,33 @@ public interface Controller {
 	 * @throws ImgFormatException
 	 * @throws IOException
 	 */
-	public float calculateImgEncodeAvaiableSize(String imgPath, String alg) throws ImgFormatException, IOException;
+	public float calculateImgEncodeAvaiableSize(String imgPath, String alg) { //throws ImgFormatException, IOException {
+		return 0;
+	}
 	
 	
 	
-	public void encode(String imgPath, String filePath, String alg, String password) throws IOException;
+	public void encode(String imgPath, String filePath, String alg, String password) throws IOException {
+	}
 	
 	
 	
-	public void encodeAndEncrypt(String imgPath, String filePath, String alg) throws IOException;
+	public void encodeAndEncrypt(String imgPath, String filePath, String alg) throws IOException {
+	}
 	
 	
 	
-	public void decode(String imgPath, String alg) throws IOException;
+	public void decode(String imgPath, String alg) throws IOException {
+	}
 	
 	
 	
-	public void DecryptAndDecode(String imgPath, String alg, String password) throws IOException;
+	public void DecryptAndDecode(String imgPath, String alg, String password) throws IOException {
+	}
+
+	public String getSupportedFormatString() {
+		return this.imgFormatAdmitted.toString();
+	}
 	
 	
 

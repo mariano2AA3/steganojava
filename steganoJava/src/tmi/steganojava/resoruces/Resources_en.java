@@ -32,9 +32,14 @@ public class Resources_en extends ResourceBundle {
         if (key.equals("title3")) return "Select file with hidden content";
         if (key.equals("select3")) return "Select file";
         if (key.equals("credits")) return "This application has been made by:";
-        if (key.equals("autor1")) return "Jorge Casas Hernán";
-        if (key.equals("autor2")) return "Mariano Hernández García";
-        if (key.equals("autor3")) return "Alberto Lorente Sánchez";
+        if (key.equals("autor1")) return "Jorge Casas Hernan";
+        if (key.equals("autor2")) return "Mariano Hernandez Garcia";
+        if (key.equals("autor3")) return "Alberto Lorente Sanchez";
+        if (key.equals("info")) return "Info";
+        if (key.equals("error")) return "Error";
+        if (key.equals("errorImgFormat")) return "Error, now only are supported the following formats:";
+        if (key.equals("imgSpaceAvaiable")) return "Space avaiable:";
+        
         return null;
     }
 
@@ -67,7 +72,11 @@ public class Resources_en extends ResourceBundle {
         		"credits",
         		"autor1",
         		"autor2",
-        		"autor3"
+        		"autor3",
+        		"info",
+        		"error",
+        		"errorImgFormat",
+        		"imgSpaceAvaiable"
         		));
     }
 }

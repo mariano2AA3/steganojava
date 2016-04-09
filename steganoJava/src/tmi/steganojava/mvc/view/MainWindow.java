@@ -7,38 +7,44 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 
+import tmi.steganojava.mvc.controller.Controller;
 import tmi.steganojava.resoruces.Resources_en;
 
 public class MainWindow extends JFrame implements View {
-
+	
+	public static Controller controller;
+	
 	@Override
-	public void updateUI() {
-		// TODO Auto-generated method stub
-		
+	public void registerController(Controller c) {
+		this.controller = c;
 	}
 
 	@Override
+	public void updateUI() {}
+
+	@Override
 	public void showInfoMsg(String msg) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(this, msg, this.resources.getString("info"), JOptionPane.OK_OPTION);
 	}
 
 	@Override
 	public void showErrorMsg(String msg) {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(this, msg, this.resources.getString("error"), JOptionPane.ERROR_MESSAGE);
 	}
 	
 	private static final long serialVersionUID = -7952723121471145730L;
 	private Dimension dimension;
+	private Resources_en resources;
 	
 	public MainWindow(Resources_en res) {
 		super();
 		
 	/* Init variables */
-		this.dimension       = new Dimension(600, 470);
+		this.dimension       = new Dimension(600, 490);
+		this.resources 		 = res;
 		JLabel label         = new JLabel(res.getString("title"));
 		JTabbedPane pane     = new JTabbedPane();
 		EncodePanel encode   = new EncodePanel(res);
@@ -67,5 +73,7 @@ public class MainWindow extends JFrame implements View {
 		getContentPane().add(label, BorderLayout.NORTH);
 		getContentPane().add(pane);
 	}
+
+
 
 }

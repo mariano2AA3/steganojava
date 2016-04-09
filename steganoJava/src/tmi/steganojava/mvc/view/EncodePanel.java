@@ -1,6 +1,8 @@
 package tmi.steganojava.mvc.view;
 
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -8,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -20,6 +23,15 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.Lister.Pack;
+
+import javafx.scene.layout.Border;
+
+/**
+ * TMI - StegoJava: application designed for encode and decode files into images
+ * 
+ * @author Mariano Hernandez García
+ */
 public class EncodePanel extends JPanel{
 	
 	private static final long serialVersionUID = 8470874018217488156L;
@@ -27,6 +39,8 @@ public class EncodePanel extends JPanel{
 	private JTextField txtImage, txtFile;
 	private JCheckBox checkPass;
 	private JPasswordField pass1, pass2;
+	private JLabel imageLabel;
+	private ButtonGroup groupAlg;
 	
 	public EncodePanel(ResourceBundle resources) {
 		super();
@@ -44,12 +58,15 @@ public class EncodePanel extends JPanel{
 	}
 	
 	private void selectFile1Panel() {
-		JPanel selectFile1Panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		JPanel selectFile1Panel = new JPanel(new BorderLayout());			
 		selectFile1Panel.setBorder(BorderFactory.createTitledBorder(res.getString("title1")));
+		JPanel aux = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		
 		this.txtImage = new JTextField(res.getString("select1"));
 		this.txtImage.setPreferredSize(new Dimension(480, 27));
 		this.txtImage.setEditable(false);
+		
+		this.imageLabel = new JLabel("");
 		
 		JButton bExamine = new JButton(res.getString("examine"));
 		bExamine.addActionListener(new ActionListener() {
@@ -58,15 +75,30 @@ public class EncodePanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
 				if ( fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION ) {
-					txtImage.setText(fileChooser.getSelectedFile().toString());
-					// ...
+					String imgPath = fileChooser.getSelectedFile().toString();
+					txtImage.setText(imgPath);
+					
+					if (!MainWindow.controller.isImgFormatCorrect(imgPath)) {
+						imageLabel.setForeground(Color.RED);
+						imageLabel.setText(res.getString("errorImgFormat") +  MainWindow.controller.getSupportedFormatString());
+					}
+					else {
+						imageLabel.setText(
+							res.getString("imgSpaceAvaiable") + " " + 
+							MainWindow.controller.calculateImgEncodeAvaiableSize(
+									imgPath, groupAlg.getSelection().getActionCommand()
+							) 
+							+ " MB"
+						);
+					}
 				} 
 			}
 		});
 		
-	
-		selectFile1Panel.add(this.txtImage);
-		selectFile1Panel.add(bExamine);
+		aux.add(this.txtImage);
+		aux.add(bExamine);
+		selectFile1Panel.add(aux, BorderLayout.CENTER);
+		selectFile1Panel.add(imageLabel, BorderLayout.SOUTH);
 		this.add(selectFile1Panel);
 	}
 	
@@ -115,12 +147,15 @@ public class EncodePanel extends JPanel{
 		JPanel pLeft = new JPanel(new GridLayout(5, 1));
 		JPanel pRight = new JPanel(new GridLayout(5, 1));
 		
-		JRadioButton alg1 = new JRadioButton(res.getString("alg1"), true);
-		JRadioButton alg2 = new JRadioButton(res.getString("alg2"), false);
 		
-		ButtonGroup group = new ButtonGroup();
-		group.add(alg1);
-		group.add(alg2);
+		JRadioButton alg1 = new JRadioButton(res.getString("alg1"), true);
+		alg1.setActionCommand(res.getString("alg1"));
+		JRadioButton alg2 = new JRadioButton(res.getString("alg2"), false);
+		alg2.setActionCommand(res.getString("alg2"));
+		groupAlg = new ButtonGroup();
+		groupAlg.add(alg1);
+		groupAlg.add(alg2);
+		
 		
 	/* Config components */
 		optionsPanel.setBorder(BorderFactory.createTitledBorder(res.getString("label3")));
@@ -192,6 +227,7 @@ public class EncodePanel extends JPanel{
 				checkPass.setSelected(false);
 				pass1.setText("");
 				pass2.setText("");
+				imageLabel.setText("");
 			}
 		});
 		
