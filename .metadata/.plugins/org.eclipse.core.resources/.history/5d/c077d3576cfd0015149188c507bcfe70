@@ -1,7 +1,0 @@
-package tmi.steganojava.mvc.controller;
-
-public interface Controller {
-	
-	public boolean isImgFormatCorrect(String path);
-
-}

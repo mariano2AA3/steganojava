@@ -8,9 +8,12 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -41,12 +44,15 @@ public class EncodePanel extends JPanel{
 	private JPasswordField pass1, pass2;
 	private JLabel imageLabel;
 	private ButtonGroup groupAlg;
+	private JButton bEncode;
+	private int bEncodeReady;
 	
 	public EncodePanel(ResourceBundle resources) {
 		super();
 		
 	/* Set variables */
 		this.res = resources;
+		bEncodeReady = 0;
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		
 
@@ -58,7 +64,8 @@ public class EncodePanel extends JPanel{
 	}
 	
 	private void selectFile1Panel() {
-		JPanel selectFile1Panel = new JPanel(new BorderLayout());			
+		JPanel selectFile1Panel = new JPanel(new BorderLayout());
+		selectFile1Panel.setPreferredSize(new Dimension(588, 80));
 		selectFile1Panel.setBorder(BorderFactory.createTitledBorder(res.getString("title1")));
 		JPanel aux = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		
@@ -66,7 +73,7 @@ public class EncodePanel extends JPanel{
 		this.txtImage.setPreferredSize(new Dimension(480, 27));
 		this.txtImage.setEditable(false);
 		
-		this.imageLabel = new JLabel("");
+		this.imageLabel = new JLabel();
 		
 		JButton bExamine = new JButton(res.getString("examine"));
 		bExamine.addActionListener(new ActionListener() {
@@ -83,6 +90,13 @@ public class EncodePanel extends JPanel{
 						imageLabel.setText(res.getString("errorImgFormat") +  MainWindow.controller.getSupportedFormatString());
 					}
 					else {
+						bEncodeReady++;
+						if ( bEncodeReady == 2 ) {
+							bEncode.setEnabled(true);
+						}
+						else {
+							bEncode.setEnabled(false);
+						}
 						imageLabel.setText(
 							res.getString("imgSpaceAvaiable") + " " + 
 							MainWindow.controller.calculateImgEncodeAvaiableSize(
@@ -118,7 +132,13 @@ public class EncodePanel extends JPanel{
 				JFileChooser fileChooser = new JFileChooser();
 				if ( fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION ) {
 					txtFile.setText(fileChooser.getSelectedFile().toString());
-					// ...
+					bEncodeReady++;
+					if ( bEncodeReady == 2 ) {
+						bEncode.setEnabled(true);
+					}
+					else {
+						bEncode.setEnabled(false);
+					}
 				} 
 			}
 		});
@@ -133,20 +153,22 @@ public class EncodePanel extends JPanel{
 		
 	/* Init components */
 		JPanel optionsPanel = new JPanel(new GridLayout(1, 2));
-		optionsPanel.setPreferredSize(new Dimension(400, 160));
+		optionsPanel.setPreferredSize(new Dimension(400, 170));
 		
 		JLabel l1 = new JLabel(res.getString("pass"));
 		JLabel l2 = new JLabel(res.getString("repPass"));
 		JLabel l3 = new JLabel(res.getString("selectAlg"));
+		final JLabel lPasswordError = new JLabel();
+		lPasswordError.setForeground(Color.RED);
+		
 		
 		this.checkPass = new JCheckBox(res.getString("usePass"));
 		
 		this.pass1 = new JPasswordField(15);
 		this.pass2 = new JPasswordField(15);
 		
-		JPanel pLeft = new JPanel(new GridLayout(5, 1));
+		JPanel pLeft = new JPanel(new GridLayout(6, 1));
 		JPanel pRight = new JPanel(new GridLayout(5, 1));
-		
 		
 		JRadioButton alg1 = new JRadioButton(res.getString("alg1"), true);
 		alg1.setActionCommand(res.getString("alg1"));
@@ -186,6 +208,39 @@ public class EncodePanel extends JPanel{
 			}
 		});
 		
+		pass1.addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent arg0) { 
+				if (pass2.getPassword().length != 0 && !Arrays.equals(pass1.getPassword(), pass2.getPassword())) {
+					lPasswordError.setText(res.getString("errorPassword"));
+				}
+				else {
+					lPasswordError.setText("");
+				}
+			}
+			
+			@Override
+			public void focusGained(FocusEvent arg0) { }
+		});
+		
+		pass2.addFocusListener(new FocusListener() {
+			
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				if (!Arrays.equals(pass1.getPassword(), pass2.getPassword())) {
+					lPasswordError.setText(res.getString("errorPassword"));
+				}
+				else {
+					lPasswordError.setText("");
+				}
+				
+			}
+			
+			@Override
+			public void focusGained(FocusEvent arg0) { }
+		});
+		
 		
 	/* Add components to relative JPanels and JFrame */
 		pLeft.add(this.checkPass);
@@ -193,6 +248,7 @@ public class EncodePanel extends JPanel{
 		pLeft.add(this.pass1);
 		pLeft.add(l2);
 		pLeft.add(this.pass2);
+		pLeft.add(lPasswordError);
 		
 		pRight.add(l3);
 		pRight.add(alg1);
@@ -207,10 +263,12 @@ public class EncodePanel extends JPanel{
 	private void buttonsPanel() {
 		JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		
-		JButton bAccept = new JButton(res.getString("tabEncode")); 
+		bEncode = new JButton(res.getString("tabEncode")); 
 		JButton bClean= new JButton(res.getString("clean"));
 		
-		bAccept.addActionListener(new ActionListener() {
+		bEncode.setEnabled(false);
+		
+		bEncode.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -228,10 +286,11 @@ public class EncodePanel extends JPanel{
 				pass1.setText("");
 				pass2.setText("");
 				imageLabel.setText("");
+				bEncode.setEnabled(false);
 			}
 		});
 		
-		bottomPanel.add(bAccept);
+		bottomPanel.add(bEncode);
 		bottomPanel.add(bClean);
 		
 		this.add(bottomPanel);

@@ -10,7 +10,7 @@ import java.util.Set;
 public class Resources_en extends ResourceBundle {
 
 	public Object handleGetObject(String key) {
-		if (key.equals("title")) return "TMI - Application title";
+		if (key.equals("title")) return "TMI - StegoJava";
 		if (key.equals("tabEncode")) return "Encode";
 		if (key.equals("tabDecode")) return "Decode";
 		if (key.equals("tabCredits")) return "Credits";
@@ -39,6 +39,8 @@ public class Resources_en extends ResourceBundle {
         if (key.equals("error")) return "Error";
         if (key.equals("errorImgFormat")) return "Error, now only are supported the following formats:";
         if (key.equals("imgSpaceAvaiable")) return "Space avaiable:";
+        if (key.equals("errorPassword")) return "Error, password does not match!";
+        
         
         return null;
     }
@@ -76,7 +78,8 @@ public class Resources_en extends ResourceBundle {
         		"info",
         		"error",
         		"errorImgFormat",
-        		"imgSpaceAvaiable"
+        		"imgSpaceAvaiable",
+        		"errorPassword"
         		));
     }
 }
