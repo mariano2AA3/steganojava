@@ -43,6 +43,8 @@ public class EncodePanel extends JPanel{
 	private JButton bEncode;
 	private int bEncodeReady;
 	
+	private String imgPath, filePath;
+	
 	public EncodePanel(ResourceBundle resources) {
 		super();
 		
@@ -78,14 +80,14 @@ public class EncodePanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
 				if ( fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION ) {
-					String imgPath = fileChooser.getSelectedFile().toString();
+					imgPath = fileChooser.getSelectedFile().toString();
 					txtImage.setText(imgPath);
 					
 					if (!MainWindow.controller.isImgFormatCorrect(imgPath)) {
 						imageLabel.setForeground(Color.RED);
 						imageLabel.setText(res.getString("errorImgFormat") +  MainWindow.controller.getSupportedFormatString());
 					}
-					else {
+					else { 
 						bEncodeReady++;
 						if ( bEncodeReady == 2 ) {
 							bEncode.setEnabled(true);
@@ -127,6 +129,7 @@ public class EncodePanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser fileChooser = new JFileChooser();
 				if ( fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION ) {
+					filePath = fileChooser.getSelectedFile().toString();
 					txtFile.setText(fileChooser.getSelectedFile().toString());
 					bEncodeReady++;
 					if ( bEncodeReady == 2 ) {
@@ -166,7 +169,7 @@ public class EncodePanel extends JPanel{
 		JPanel pLeft = new JPanel(new GridLayout(6, 1));
 		JPanel pRight = new JPanel(new GridLayout(5, 1));
 		
-		JRadioButton alg1 = new JRadioButton(res.getString("alg1"), true);
+		final JRadioButton alg1 = new JRadioButton(res.getString("alg1"), true);
 		alg1.setActionCommand(res.getString("alg1"));
 		JRadioButton alg2 = new JRadioButton(res.getString("alg2"), false);
 		alg2.setActionCommand(res.getString("alg2"));
@@ -269,7 +272,7 @@ public class EncodePanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//MainWindow.controller.encode(imgPath, filePath, alg, password);
+				MainWindow.controller.encode(imgPath, filePath, groupAlg.getSelection().getActionCommand(), String.valueOf(pass1.getPassword()));
 			}
 		});
 		

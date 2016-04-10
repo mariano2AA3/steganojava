@@ -44,7 +44,6 @@ public class Controller {
 	
 	
 	public void encode(String imgPath, String filePath, String alg, String password) {
-		System.out.println("INFO: Encoding file: " + filePath + " in image: " + imgPath + " with algotithm: " + alg);
 	}
 	
 	

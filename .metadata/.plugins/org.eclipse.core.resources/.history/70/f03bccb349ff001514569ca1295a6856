@@ -19,7 +19,7 @@ public class MainWindow extends JFrame implements View {
 	
 	@Override
 	public void registerController(Controller c) {
-		MainWindow.controller = c;
+		this.controller = c;
 	}
 
 	@Override
