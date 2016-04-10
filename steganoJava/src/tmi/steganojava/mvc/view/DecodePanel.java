@@ -1,16 +1,19 @@
 package tmi.steganojava.mvc.view;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class DecodePanel extends JPanel {
@@ -66,19 +69,36 @@ public class DecodePanel extends JPanel {
 	private void optionsPanel() {
 		
 		/* Init components */
-			JPanel optionsPanel = new JPanel();
+			JPanel optionsPanel = new JPanel(new BorderLayout());
+			JPanel pSup = new JPanel(new FlowLayout(FlowLayout.LEFT));
+			JPanel pInf = new JPanel(new FlowLayout(FlowLayout.LEFT));
+			
+			JLabel l1 = new JLabel(res.getString("selectAlg"));
 			optionsPanel.setPreferredSize(new Dimension(480, 100));
-			JLabel l1 = new JLabel(res.getString("pass"));
-		
-			this.pass1 = new JPasswordField(15);
+			JLabel l2 = new JLabel(res.getString("pass"));
+			this.pass1 = new JPasswordField(35);
+			
+			JRadioButton alg1 = new JRadioButton(res.getString("alg1"), true);
+			alg1.setActionCommand(res.getString("alg1"));
+			JRadioButton alg2 = new JRadioButton(res.getString("alg2"), false);
+			alg2.setActionCommand(res.getString("alg2"));
+			ButtonGroup groupAlg = new ButtonGroup();
+			groupAlg.add(alg1);
+			groupAlg.add(alg2);
 			
 		/* Config components */
 			optionsPanel.setBorder(BorderFactory.createTitledBorder(res.getString("label3")));
 					
 			
 		/* Add components to relative JPanels and JFrame */
-			optionsPanel.add(l1);
-			optionsPanel.add(this.pass1);
+			
+			pSup.add(l1);
+			pSup.add(alg1);
+			pSup.add(alg2);
+			optionsPanel.add(pSup, BorderLayout.NORTH);
+			pInf.add(l2);
+			pInf.add(this.pass1);
+			optionsPanel.add(pInf);
 			this.add(optionsPanel);
 		}
 
@@ -93,7 +113,7 @@ public class DecodePanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Do something...
+				pass1.setText("");
 			}
 		});
 		

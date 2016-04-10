@@ -12,7 +12,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
@@ -26,9 +25,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.Lister.Pack;
-
-import javafx.scene.layout.Border;
 
 /**
  * TMI - StegoJava: application designed for encode and decode files into images
@@ -217,6 +213,7 @@ public class EncodePanel extends JPanel{
 				}
 				else {
 					lPasswordError.setText("");
+					bEncodeReady++;
 				}
 			}
 			
@@ -228,7 +225,7 @@ public class EncodePanel extends JPanel{
 			
 			@Override
 			public void focusLost(FocusEvent arg0) {
-				if (!Arrays.equals(pass1.getPassword(), pass2.getPassword())) {
+				if (pass1.getPassword().length != 0 && !Arrays.equals(pass1.getPassword(), pass2.getPassword())) {
 					lPasswordError.setText(res.getString("errorPassword"));
 				}
 				else {
@@ -272,7 +269,7 @@ public class EncodePanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Do something...
+				//MainWindow.controller.encode(imgPath, filePath, alg, password);
 			}
 		});
 		
