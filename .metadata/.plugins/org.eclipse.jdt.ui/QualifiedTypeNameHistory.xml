@@ -16,11 +16,8 @@
 <fullyQualifiedTypeName name="tmi.steganojava.resoruces.Resources_en"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
-<fullyQualifiedTypeName name="tmi.steganojava.exceptions.ImgFormatException"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
 <fullyQualifiedTypeName name="tmi.steganojava.mvc.controller.Controller"/>
-<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.bind.v2.runtime.reflect.Lister.Pack"/>
 <fullyQualifiedTypeName name="javafx.scene.layout.Border"/>
@@ -39,4 +36,15 @@
 <fullyQualifiedTypeName name="javax.swing.event.ChangeListener"/>
 <fullyQualifiedTypeName name="javafx.scene.GroupBuilder"/>
 <fullyQualifiedTypeName name="javax.swing.ButtonGroup"/>
+<fullyQualifiedTypeName name="tmi.steganojava.mvc.view.View"/>
+<fullyQualifiedTypeName name="java.awt.GridLayout"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="tmi.steganojava.stegoalgorithms.Lsb"/>
+<fullyQualifiedTypeName name="tmi.steganojava.utils.ReadWriteFile"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.io.ByteArrayInputStream"/>
+<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+<fullyQualifiedTypeName name="tmi.steganojava.exceptions.ImgFormatException"/>
 </qualifiedTypeNameHistroy>

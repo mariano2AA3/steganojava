@@ -1,16 +1,9 @@
 package tmi.steganojava.mvc.controller;
 
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
-
 import tmi.steganojava.exceptions.ImgFormatException;
-import tmi.steganojava.mvc.view.MainWindow;
 import tmi.steganojava.mvc.view.View;
 import tmi.steganojava.stegoalgorithms.Lsb;
 import tmi.steganojava.utils.ReadWriteFile;
@@ -18,11 +11,9 @@ import tmi.steganojava.utils.ReadWriteFile;
 public class Controller {
 	
 	private ReadWriteFile rwFile;
-	private static Lsb lsbInstanceLsb = null;
-	
+	private static Lsb lsbInstanceLsb = null;	
 	private ArrayList<String> imgFormatAdmitted;
 	private View view;
-	
 	
 	
 	public Controller(View w) {
@@ -59,9 +50,7 @@ public class Controller {
 	}
 	
 	
-	
-	public void encode(String imgPath, String filePath, String alg) {
-		
+	private void encodeAux(String imgPath, String filePath, String alg, String password) {
 		byte[] fileBytes;
 		BufferedImage bufferedImg;
 		
@@ -76,6 +65,11 @@ public class Controller {
 			switch (alg) {
 			case "LSB":
 				System.out.println(" |- encoding using algotithm: " + alg);
+				if ( password != null ) {
+					// Encrypt file...
+					// fileBytes = ...
+				}
+				
 				//getLsbInstance().encode(bufferedImg, fileBytes);
 				this.view.showInfoMsg("Great!! Your secret image has been created");
 			break;
@@ -92,14 +86,16 @@ public class Controller {
 		} catch (ImgFormatException e) {
 			this.view.showErrorMsg("Error: image format not supported");
 		}
-		
-
+	}
+	
+	public void encode(String imgPath, String filePath, String alg) {
+		this.encodeAux(imgPath, filePath, alg, null);
 	}
 	
 	
 	
 	public void encodeAndEncrypt(String imgPath, String filePath, String alg, String password) {
-		
+		this.encodeAux(imgPath, filePath, alg, password);
 	}
 	
 	

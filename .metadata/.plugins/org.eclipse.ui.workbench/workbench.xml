@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="22" version="2.0">
+<workbench progressCount="31" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="0" y="30">
 <fastViewData fastViewLocation="1024"/>
@@ -39,73 +39,61 @@
 <part id="7"/>
 <part id="8"/>
 <part id="9"/>
-<part id="10"/>
-<part id="11"/>
-<part id="12"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Main.java" partName="Main.java" path="/home/supra/workspace/steganojava/steganoJava/src/Main.java" title="Main.java" tooltip="steganoJava/src/Main.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/Main.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="387" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="View.java" partName="View.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/mvc/view/View.java" title="View.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/View.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/mvc/view/View.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="172" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Controller.java" partName="Controller.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/mvc/controller/Controller.java" title="Controller.java" tooltip="steganoJava/src/tmi/steganojava/mvc/controller/Controller.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/mvc/controller/Controller.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="506" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="404" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainWindow.java" partName="MainWindow.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/mvc/view/MainWindow.java" title="MainWindow.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/MainWindow.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/mvc/view/MainWindow.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="746" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CreditsPanel.java" partName="CreditsPanel.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/mvc/view/CreditsPanel.java" title="CreditsPanel.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/CreditsPanel.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/mvc/view/CreditsPanel.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="33" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DecodePanel.java" partName="DecodePanel.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/mvc/view/DecodePanel.java" title="DecodePanel.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/DecodePanel.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/mvc/view/DecodePanel.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="33" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2424" selectionTopPixel="568"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EncodePanel.java" partName="EncodePanel.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/mvc/view/EncodePanel.java" title="EncodePanel.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/EncodePanel.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/mvc/view/EncodePanel.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="33" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7977" selectionTopPixel="4080"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Controller.java" partName="Controller.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/mvc/controller/Controller.java" title="Controller.java" tooltip="steganoJava/src/tmi/steganojava/mvc/controller/Controller.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/mvc/controller/Controller.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="516" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DecodePanel.java" partName="DecodePanel.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/mvc/view/DecodePanel.java" title="DecodePanel.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/DecodePanel.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/mvc/view/DecodePanel.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3550" selectionTopPixel="1452"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Resources_en.java" partName="Resources_en.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/resoruces/Resources_en.java" title="Resources_en.java" tooltip="steganoJava/src/tmi/steganojava/resoruces/Resources_en.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/resoruces/Resources_en.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1083" selectionTopPixel="78"/>
+<editorState selectionHorizontalPixel="0" selectionLength="6" selectionOffset="347" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Security.java" partName="Security.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/utils/Security.java" title="Security.java" tooltip="steganoJava/src/tmi/steganojava/utils/Security.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/utils/Security.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="164" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReadWriteFile.java" partName="ReadWriteFile.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/utils/ReadWriteFile.java" title="ReadWriteFile.java" tooltip="steganoJava/src/tmi/steganojava/utils/ReadWriteFile.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/utils/ReadWriteFile.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="206" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ImgFormatException.java" partName="ImgFormatException.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/exceptions/ImgFormatException.java" title="ImgFormatException.java" tooltip="steganoJava/src/tmi/steganojava/exceptions/ImgFormatException.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/exceptions/ImgFormatException.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="200" selectionTopPixel="0"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="View.java" partName="View.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/mvc/view/View.java" title="View.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/View.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/mvc/view/View.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="328" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StegoAlgorithm.java" partName="StegoAlgorithm.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/stegoalgorithms/StegoAlgorithm.java" title="StegoAlgorithm.java" tooltip="steganoJava/src/tmi/steganojava/stegoalgorithms/StegoAlgorithm.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/stegoalgorithms/StegoAlgorithm.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="275" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="4" selectionOffset="124" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Lsb.java" partName="Lsb.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/stegoalgorithms/Lsb.java" title="Lsb.java" tooltip="steganoJava/src/tmi/steganojava/stegoalgorithms/Lsb.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReadWriteFile.java" partName="ReadWriteFile.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/utils/ReadWriteFile.java" title="ReadWriteFile.java" tooltip="steganoJava/src/tmi/steganojava/utils/ReadWriteFile.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/utils/ReadWriteFile.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="498" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Lsb.java" partName="Lsb.java" path="/home/supra/workspace/steganojava/steganoJava/src/tmi/steganojava/stegoalgorithms/Lsb.java" title="Lsb.java" tooltip="steganoJava/src/tmi/steganojava/stegoalgorithms/Lsb.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/steganoJava/src/tmi/steganojava/stegoalgorithms/Lsb.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="125" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="580" selectionTopPixel="234"/>
 </editor>
 </editors>
 <views>
+<view id="org.eclipse.debug.ui.DebugView" partName="Debug">
+<viewState/>
+</view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Errors (5 items)"/>
-<category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Warnings (5 items)"/>
 <category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Warnings"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="105" org.eclipse.ui.ide.pathField="265" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="1269"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -114,6 +102,9 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="">
@@ -161,6 +152,13 @@
 <filteredTreeFindHistory/>
 </viewState>
 </view>
+<view id="org.eclipse.debug.ui.BreakpointView" partName="Breakpoints">
+<viewState/>
+</view>
+<view id="org.eclipse.debug.ui.VariableView" partName="Variables">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks"/>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
@@ -229,9 +227,19 @@
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.jdt.ui.JavadocView"/>
 <view id="org.eclipse.jdt.ui.SourceView"/>
-<view id="org.eclipse.ui.views.ContentOutline"/>
-<view id="org.eclipse.mylyn.tasks.ui.views.tasks"/>
-<fastViewBars/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<fastViewBars>
+<fastViewBar fastViewLocation="131072" id="org.eclipse.ui.internal.ViewStack@2b329bbd" orientation="512" selectedTabId="org.eclipse.mylyn.tasks.ui.views.tasks" style="0">
+<fastViews>
+<view id="org.eclipse.mylyn.tasks.ui.views.tasks" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+<fastViewBar fastViewLocation="131072" id="right" orientation="512" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">
+<fastViews>
+<view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+</fastViewBars>
 <layout>
 <mainWindow>
 <info folder="true" part="left">
@@ -256,42 +264,140 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.24950495" ratioLeft="252" ratioRight="758" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.1851408" ratioLeft="309" ratioRight="1360" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.74960876" ratioLeft="479" ratioRight="160" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="3"/>
 </presentation>
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@2b329bbd" ratio="0.74934036" ratioLeft="568" ratioRight="190" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.mylyn.tasks.ui.views.tasks" appearance="2" expanded="2">
-<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="Task List"/>
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info folder="true" part="right" ratio="0.49895614" ratioLeft="239" ratioRight="240" relationship="4" relative="org.eclipse.ui.internal.ViewStack@2b329bbd">
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<page content="org.eclipse.ui.texteditor.TemplatesView" label="LabelNotFound"/>
+<page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info part="org.eclipse.egit.ui.RepositoriesView" ratio="0.599374" ratioLeft="383" ratioRight="256" relationship="4" relative="left"/>
+</mainWindow>
+</layout>
+</perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.eclipse.debug.internal.ui.DebugPerspectiveFactory" id="org.eclipse.debug.ui.DebugPerspective" label="Debug"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.doc.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.tasks.ui.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.wb.core.ui.actionset"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
+<alwaysOnActionSet id="org.eclipse.jdt.debug.ui.JDTDebugActionSet"/>
+<alwaysOnActionSet id="org.eclipse.jdt.ui.JavaActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
+<show_view_action id="org.eclipse.debug.ui.DebugView"/>
+<show_view_action id="org.eclipse.debug.ui.VariableView"/>
+<show_view_action id="org.eclipse.debug.ui.BreakpointView"/>
+<show_view_action id="org.eclipse.debug.ui.ExpressionView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="org.eclipse.ant.ui.views.AntView"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<show_view_action id="org.eclipse.jdt.debug.ui.DisplayView"/>
+<perspective_action id="org.eclipse.jdt.ui.JavaPerspective"/>
+<perspective_action id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
+<perspective_action id="org.eclipse.wst.xml.ui.perspective"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.TaskList"/>
+<view id="org.eclipse.debug.ui.DebugView"/>
+<view id="org.eclipse.debug.ui.VariableView"/>
+<view id="org.eclipse.debug.ui.BreakpointView"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
+<page content="org.eclipse.jdt.ui.PackageExplorer" label="LabelNotFound"/>
+<page content="org.eclipse.jdt.ui.TypeHierarchy" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="right" ratio="0.49895614" ratioLeft="239" ratioRight="240" relationship="4" relative="org.eclipse.ui.internal.ViewStack@2b329bbd">
+<info folder="true" part="stickyFolderRight" ratio="0.74969476" ratioLeft="1228" ratioRight="410" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.74972314" ratioLeft="677" ratioRight="226" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
+<page content="org.eclipse.jdt.debug.ui.DisplayView" label="LabelNotFound"/>
+<page content="org.eclipse.search.SearchResultView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.44903988" ratioLeft="304" ratioRight="373" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.74969476" ratioLeft="1228" ratioRight="410" relationship="2" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
-<page content="org.eclipse.ui.texteditor.TemplatesView" label="LabelNotFound"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.egit.ui.RepositoriesView" ratio="0.599374" ratioLeft="383" ratioRight="256" relationship="4" relative="left"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.5" ratioLeft="819" ratioRight="819" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
+<page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
+<page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
 </mainWindow>
 </layout>
 </perspective>
@@ -299,165 +405,161 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/steganoJava/src/tmi/steganojava/mvc/controller/Controller.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/steganoJava/src/tmi/steganojava/resoruces/Resources_en.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/steganoJava/src/tmi/steganojava/utils/Cypher.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/steganoJava/src/tmi/steganojava/utils/ReadWriteFile.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/steganoJava/src/tmi/steganojava/utils/Security.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/steganoJava/src/tmi/steganojava/exceptions/ImgFormatException.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/steganoJava/src/tmi/steganojava/stegoalgorithms/StegoAlgorithm.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/steganoJava/src/tmi/steganojava/stegoalgorithms/LsbBMP.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/steganoJava/src/tmi/steganojava/mvc/view/EncodePanel.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/steganoJava/src/tmi/steganojava/mvc/controller/Controller.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/steganoJava/src/tmi/steganojava/utils/ReadWriteFile.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/steganoJava/src/tmi/steganojava/stegoalgorithms/Lsb.java"/>
 </editors>
-<item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="Controller.java" index="2">
+<position/>
 </item>
 <item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="150" y="0"/>
+<position info="not_deleted" x="270" y="0"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position/>
 </item>
 <item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="32" y="20"/>
+<position info="not_deleted" x="426" y="0"/>
 </item>
-<item historyLabel="Cypher.java" index="2">
-<position info="not_deleted" x="181" y="0"/>
+<item historyLabel="Controller.java" index="2">
+<position/>
 </item>
-<item historyLabel="Resources_en.java" index="1">
-<position info="not_deleted" x="1083" y="0"/>
+<item historyLabel="Lsb.java" index="4">
+<position info="not_deleted" x="301" y="0"/>
 </item>
-<item historyLabel="Cypher.java" index="2">
-<position info="not_deleted" x="181" y="0"/>
+<item historyLabel="StegoAlgorithm.java" index="0">
+<position info="not_deleted" x="173" y="0"/>
 </item>
-<item historyLabel="Security.java" index="4">
-<position info="not_deleted" x="185" y="0"/>
-</item>
-<item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="240" y="0"/>
-</item>
-<item historyLabel="ImgFormatException.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ImgFormatException.java" index="5">
-<position info="not_deleted" x="200" y="0"/>
-</item>
-<item historyLabel="ImgFormatException.java" index="5">
-<position info="not_deleted" x="200" y="0"/>
+<item historyLabel="Lsb.java" index="4">
+<position info="not_deleted" x="580" y="0"/>
 </item>
 <item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="240" y="0"/>
+<position info="not_deleted" x="426" y="0"/>
+</item>
+<item historyLabel="StegoAlgorithm.java" index="0">
+<position info="not_deleted" x="173" y="0"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position/>
 </item>
 <item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="155" y="0"/>
+<position/>
 </item>
-<item historyLabel="ImgFormatException.java" index="5">
-<position info="not_deleted" x="200" y="0"/>
-</item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="171" y="0"/>
-</item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="221" y="0"/>
-</item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="252" y="0"/>
-</item>
-<item historyLabel="Controller.java" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Controller.java" index="0">
-<position info="not_deleted" x="390" y="0"/>
-</item>
-<item historyLabel="Controller.java" index="0">
-<position info="not_deleted" x="607" y="0"/>
-</item>
-<item historyLabel="Controller.java" index="0">
-<position info="not_deleted" x="265" y="0"/>
-</item>
-<item historyLabel="Controller.java" index="0">
-<position info="not_deleted" x="735" y="0"/>
-</item>
-<item historyLabel="Controller.java" index="0">
-<position info="not_deleted" x="630" y="0"/>
-</item>
-<item historyLabel="Security.java" index="4">
-<position info="not_deleted" x="234" y="0"/>
-</item>
-<item historyLabel="Controller.java" index="0">
-<position info="not_deleted" x="530" y="0"/>
-</item>
-<item historyLabel="Security.java" index="4">
-<position info="not_deleted" x="164" y="0"/>
+<item historyLabel="Controller.java" index="2">
+<position/>
 </item>
 <item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="227" y="0"/>
+<position/>
 </item>
-<item historyLabel="Security.java" index="4">
-<position info="not_deleted" x="164" y="0"/>
-</item>
-<item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="227" y="0"/>
-</item>
-<item historyLabel="Security.java" index="4">
-<position info="not_deleted" x="164" y="0"/>
+<item historyLabel="Controller.java" index="2">
+<position/>
 </item>
 <item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="227" y="0"/>
+<position/>
+</item>
+<item historyLabel="EncodePanel.java" index="1">
+<position info="not_deleted" x="2593" y="10"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position/>
 </item>
 <item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="233" y="0"/>
+<position/>
 </item>
-<item historyLabel="Controller.java" index="0">
-<position info="not_deleted" x="506" y="0"/>
-</item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="252" y="0"/>
-</item>
-<item historyLabel="LsbBMP.java" index="7">
-<position info="not_deleted" x="300" y="0"/>
-</item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="171" y="0"/>
-</item>
-<item historyLabel="LsbBMP.java" index="7">
-<position info="not_deleted" x="300" y="0"/>
-</item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="171" y="0"/>
-</item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="171" y="0"/>
+<item historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="1768" y="0"/>
 </item>
 <item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="123" y="4"/>
+<position info="not_deleted" x="354" y="0"/>
 </item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="171" y="0"/>
-</item>
-<item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="206" y="0"/>
-</item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="171" y="0"/>
-</item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="149" y="0"/>
-</item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="275" y="0"/>
+<item historyLabel="Controller.java" index="2">
+<position/>
 </item>
 <item historyLabel="ReadWriteFile.java" index="3">
-<position info="not_deleted" x="206" y="0"/>
+<position info="not_deleted" x="354" y="0"/>
 </item>
-<item historyLabel="StegoAlgorithm.java" index="6">
-<position info="not_deleted" x="275" y="0"/>
+<item historyLabel="Controller.java" index="2">
+<position/>
 </item>
-<item historyLabel="LsbBMP.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="ReadWriteFile.java" index="3">
+<position info="not_deleted" x="370" y="0"/>
 </item>
-<item active="true" historyLabel="Lsb.java" index="8">
-<position info="not_deleted" x="99" y="0"/>
+<item historyLabel="Controller.java" index="2">
+<position/>
+</item>
+<item historyLabel="ReadWriteFile.java" index="3">
+<position info="not_deleted" x="498" y="0"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position/>
+</item>
+<item historyLabel="ReadWriteFile.java" index="3">
+<position info="not_deleted" x="498" y="0"/>
+</item>
+<item historyLabel="EncodePanel.java" index="1">
+<position info="not_deleted" x="8266" y="0"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="2603" y="0"/>
+</item>
+<item historyLabel="EncodePanel.java" index="1">
+<position info="not_deleted" x="7977" y="0"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="2603" y="0"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position/>
+</item>
+<item historyLabel="Lsb.java" index="4">
+<position info="not_deleted" x="580" y="0"/>
+</item>
+<item historyLabel="StegoAlgorithm.java" index="0">
+<position info="not_deleted" x="124" y="4"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position/>
+</item>
+<item historyLabel="ReadWriteFile.java" index="3">
+<position info="not_deleted" x="498" y="0"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="1531" y="0"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="2473" y="7"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="2482" y="8"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="2492" y="3"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="2503" y="0"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="2624" y="7"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="2633" y="8"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="2643" y="3"/>
+</item>
+<item historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="2648" y="8"/>
+</item>
+<item active="true" historyLabel="Controller.java" index="2">
+<position info="not_deleted" x="1913" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -465,6 +567,10 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@2b329bbd"/>
+<trimItem IMemento.internal.id="right"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 <trimItem IMemento.internal.id="org.eclipse.mylyn.tasks.ui.trim.container"/>
@@ -477,50 +583,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LsbBMP.java" tooltip="steganoJava/src/tmi/steganojava/stegoalgorithms/LsbBMP.java">
-<persistable path="/steganoJava/src/tmi/steganojava/stegoalgorithms/LsbBMP.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StegoAlgorithm.java" tooltip="steganoJava/src/tmi/steganojava/stegoalgorithms/StegoAlgorithm.java">
-<persistable path="/steganoJava/src/tmi/steganojava/stegoalgorithms/StegoAlgorithm.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ImgFormatException.java" tooltip="steganoJava/src/tmi/steganojava/exceptions/ImgFormatException.java">
-<persistable path="/steganoJava/src/tmi/steganojava/exceptions/ImgFormatException.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Lsb.java" tooltip="steganoJava/src/tmi/steganojava/stegoalgorithms/Lsb.java">
+<persistable path="/steganoJava/src/tmi/steganojava/stegoalgorithms/Lsb.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReadWriteFile.java" tooltip="steganoJava/src/tmi/steganojava/utils/ReadWriteFile.java">
 <persistable path="/steganoJava/src/tmi/steganojava/utils/ReadWriteFile.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Cypher.java" tooltip="steganoJava/src/tmi/steganojava/utils/Cypher.java">
-<persistable path="/steganoJava/src/tmi/steganojava/utils/Cypher.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Resources_en.java" tooltip="steganoJava/src/tmi/steganojava/resoruces/Resources_en.java">
-<persistable path="/steganoJava/src/tmi/steganojava/resoruces/Resources_en.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EncodePanel.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/EncodePanel.java">
-<persistable path="/steganoJava/src/tmi/steganojava/mvc/view/EncodePanel.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DecodePanel.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/DecodePanel.java">
-<persistable path="/steganoJava/src/tmi/steganojava/mvc/view/DecodePanel.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CreditsPanel.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/CreditsPanel.java">
-<persistable path="/steganoJava/src/tmi/steganojava/mvc/view/CreditsPanel.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainWindow.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/MainWindow.java">
-<persistable path="/steganoJava/src/tmi/steganojava/mvc/view/MainWindow.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Controller.java" tooltip="steganoJava/src/tmi/steganojava/mvc/controller/Controller.java">
-<persistable path="/steganoJava/src/tmi/steganojava/mvc/controller/Controller.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StegoAlgorithm.java" tooltip="steganoJava/src/tmi/steganojava/stegoalgorithms/StegoAlgorithm.java">
+<persistable path="/steganoJava/src/tmi/steganojava/stegoalgorithms/StegoAlgorithm.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="View.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/View.java">
 <persistable path="/steganoJava/src/tmi/steganojava/mvc/view/View.java"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Resources_en.java" tooltip="steganoJava/src/tmi/steganojava/resoruces/Resources_en.java">
+<persistable path="/steganoJava/src/tmi/steganojava/resoruces/Resources_en.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DecodePanel.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/DecodePanel.java">
+<persistable path="/steganoJava/src/tmi/steganojava/mvc/view/DecodePanel.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Controller.java" tooltip="steganoJava/src/tmi/steganojava/mvc/controller/Controller.java">
+<persistable path="/steganoJava/src/tmi/steganojava/mvc/controller/Controller.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EncodePanel.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/EncodePanel.java">
+<persistable path="/steganoJava/src/tmi/steganojava/mvc/view/EncodePanel.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainWindow.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/MainWindow.java">
+<persistable path="/steganoJava/src/tmi/steganojava/mvc/view/MainWindow.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ImgFormatException.java" tooltip="steganoJava/src/tmi/steganojava/exceptions/ImgFormatException.java">
+<persistable path="/steganoJava/src/tmi/steganojava/exceptions/ImgFormatException.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Main.java" tooltip="steganoJava/src/Main.java">
 <persistable path="/steganoJava/src/Main.java"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LsbBMP.java" tooltip="steganoJava/src/tmi/steganojava/stegoalgorithms/LsbBMP.java">
+<persistable path="/steganoJava/src/tmi/steganojava/stegoalgorithms/LsbBMP.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Cypher.java" tooltip="steganoJava/src/tmi/steganojava/utils/Cypher.java">
+<persistable path="/steganoJava/src/tmi/steganojava/utils/Cypher.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CreditsPanel.java" tooltip="steganoJava/src/tmi/steganojava/mvc/view/CreditsPanel.java">
+<persistable path="/steganoJava/src/tmi/steganojava/mvc/view/CreditsPanel.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="CreditsPanel.java" tooltip="SteganoJava/src/tmi/mvc/View/CreditsPanel.java">
 <persistable path="/SteganoJava/src/tmi/mvc/View/CreditsPanel.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DecodePanel.java" tooltip="SteganoJava/src/tmi/mvc/View/DecodePanel.java">
-<persistable path="/SteganoJava/src/tmi/mvc/View/DecodePanel.java"/>
 </file>
 </mruList>
 </workbench>
