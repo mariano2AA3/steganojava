@@ -273,7 +273,12 @@ public class EncodePanel extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainWindow.controller.encode(imgPath, filePath, groupAlg.getSelection().getActionCommand(), String.valueOf(pass1.getPassword()));
+				if ( !checkPass.isSelected() ) {
+					MainWindow.controller.encode(imgPath, filePath, groupAlg.getSelection().getActionCommand());
+				}
+				else {
+					MainWindow.controller.encodeAndEncrypt(imgPath, filePath, groupAlg.getSelection().getActionCommand(), String.valueOf(pass1.getPassword()));
+				}
 			}
 		});
 		

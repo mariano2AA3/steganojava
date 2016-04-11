@@ -16,25 +16,7 @@ import tmi.steganojava.resoruces.Resources_en;
 public class MainWindow extends JFrame implements View {
 	
 	public static Controller controller;
-	
-	@Override
-	public void registerController(Controller c) {
-		MainWindow.controller = c;
-	}
-
-	@Override
-	public void updateUI() {}
-
-	@Override
-	public void showInfoMsg(String msg) {
-		JOptionPane.showMessageDialog(this, msg, this.resources.getString("info"), JOptionPane.OK_OPTION);
-	}
-
-	@Override
-	public void showErrorMsg(String msg) {
-		JOptionPane.showMessageDialog(this, msg, this.resources.getString("error"), JOptionPane.ERROR_MESSAGE);
-	}
-	
+		
 	private static final long serialVersionUID = -7952723121471145730L;
 	private Dimension dimension;
 	private Resources_en resources;
@@ -72,6 +54,34 @@ public class MainWindow extends JFrame implements View {
 	/* Add to panel */
 		getContentPane().add(label, BorderLayout.NORTH);
 		getContentPane().add(pane);
+	}
+	
+	@Override
+	public void registerController(Controller c) {
+		MainWindow.controller = c;
+	}
+
+	@Override
+	public void updateUI() {}
+
+	@Override
+	public void showInfoMsg(String msg) {
+		JOptionPane.showMessageDialog(this, msg, this.resources.getString("info"), JOptionPane.OK_OPTION);
+	}
+
+	@Override
+	public void showErrorMsg(String msg) {
+		JOptionPane.showMessageDialog(this, msg, this.resources.getString("error"), JOptionPane.ERROR_MESSAGE);
+	}
+
+	@Override
+	public void showImgReadErrorMsg() {
+		JOptionPane.showMessageDialog(this, "Error reading image file", this.resources.getString("error"), JOptionPane.ERROR_MESSAGE);
+	}
+	
+	@Override
+	public void showFileReadErrorMsg() {
+		JOptionPane.showMessageDialog(this, "Error reading file", this.resources.getString("error"), JOptionPane.ERROR_MESSAGE);
 	}
 
 

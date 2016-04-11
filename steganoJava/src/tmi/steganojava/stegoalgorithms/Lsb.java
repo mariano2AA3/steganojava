@@ -11,17 +11,17 @@ public class Lsb implements StegoAlgorithm {
 	
 	
 	@Override
-	public void encode(BufferedImage img, char[] bytesFile) {
-		int[] arrayText = new int[(bytesFile.length*8)];
-		for(int i = 0; i < bytesFile.length; i++){
-			arrayText[i*7]     = (((int)(bytesFile[i])) & 0x1<<7)>>7;
-			arrayText[(i*7)+1] = (((int)(bytesFile[i])) & 0x1<<6)>>6;
-			arrayText[(i*7)+2] = (((int)(bytesFile[i])) & 0x1<<5)>>5;
-			arrayText[(i*7)+3] = (((int)(bytesFile[i])) & 0x1<<4)>>4;
-			arrayText[(i*7)+4] = (((int)(bytesFile[i])) & 0x1<<3)>>3;
-			arrayText[(i*7)+5] = (((int)(bytesFile[i])) & 0x1<<2)>>2;
-			arrayText[(i*7)+6] = (((int)(bytesFile[i])) & 0x1<<1)>>1;
-			arrayText[(i*7)+7] = (((int)(bytesFile[i])) & 0x1<<0)>>0;
+	public void encode(BufferedImage img, byte[] fileBytes) {
+		int[] arrayText = new int[(fileBytes.length*8)];
+		for(int i = 0; i < fileBytes.length; i++){
+			arrayText[i*7]     = (((int)(fileBytes[i])) & 0x1<<7)>>7;
+			arrayText[(i*7)+1] = (((int)(fileBytes[i])) & 0x1<<6)>>6;
+			arrayText[(i*7)+2] = (((int)(fileBytes[i])) & 0x1<<5)>>5;
+			arrayText[(i*7)+3] = (((int)(fileBytes[i])) & 0x1<<4)>>4;
+			arrayText[(i*7)+4] = (((int)(fileBytes[i])) & 0x1<<3)>>3;
+			arrayText[(i*7)+5] = (((int)(fileBytes[i])) & 0x1<<2)>>2;
+			arrayText[(i*7)+6] = (((int)(fileBytes[i])) & 0x1<<1)>>1;
+			arrayText[(i*7)+7] = (((int)(fileBytes[i])) & 0x1<<0)>>0;
 		}
 		
 		boolean leave = false;

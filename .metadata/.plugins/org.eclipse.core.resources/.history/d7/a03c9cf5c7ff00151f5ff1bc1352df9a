@@ -1,0 +1,88 @@
+package tmi.steganojava.mvc.controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+
+import tmi.steganojava.exceptions.ImgFormatException;
+import tmi.steganojava.mvc.view.MainWindow;
+import tmi.steganojava.mvc.view.View;
+import tmi.steganojava.stegoalgorithms.Lsb;
+
+public class Controller {
+	
+	private static Lsb lsbInstanceLsb = null;
+	
+	private ArrayList<String> imgFormatAdmitted;
+	private View view;
+	
+	public Controller(View w) {
+		this.imgFormatAdmitted = new ArrayList<String>();
+		this.view = w;
+		
+		// Add supported image format extentions
+		this.imgFormatAdmitted.add("bmp");
+	}
+		
+	/**
+	 * This function checks if the image path file contains a extension recognize by the application.
+	 * Now, there are recognized the following formats: BMP 
+	 * @param imgPath
+	 * @return true if imgPath contains a recognize format
+	 */
+	public boolean isImgFormatCorrect(String imgPath) {
+		String extention = imgPath.substring(imgPath.lastIndexOf(".") + 1, imgPath.length());
+		return this.imgFormatAdmitted.contains(extention);
+	}
+	
+	
+	/**
+	 * 
+	 * @param path
+	 * @param alg
+	 * @return
+	 * @throws ImgFormatException
+	 * @throws IOException
+	 */
+	public float calculateImgEncodeAvaiableSize(String imgPath, String alg) {
+		return 0;
+	}
+	
+	
+	
+	public void encode(String imgPath, String filePath, String alg, String password) {
+		System.out.println("INFO: Encoding file: " + filePath + " in image: " + imgPath);
+		
+		switch (alg) {
+		case "LSB":
+			System.out.println(" -- Algotithm: " + alg);
+			
+			break;
+
+		default:
+			break;
+		}
+	}
+	
+	
+	
+	public void encodeAndEncrypt(String imgPath, String filePath, String alg) {
+	}
+	
+	
+	
+	public void decode(String imgPath, String alg) throws IOException {
+	}
+	
+	
+	
+	public void DecryptAndDecode(String imgPath, String alg, String password) {
+	}
+
+	public String getSupportedFormatString() {
+		return this.imgFormatAdmitted.toString();
+	}
+	
+	
+
+}

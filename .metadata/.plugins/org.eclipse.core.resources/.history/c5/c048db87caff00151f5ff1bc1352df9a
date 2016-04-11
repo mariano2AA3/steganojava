@@ -1,0 +1,25 @@
+package tmi.steganojava.utils;
+
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+public class ReadWriteFile {
+	
+	
+	public byte[] readFile(String path) throws IOException{
+		return null;
+	}
+	
+	public void writeFile(char[] bytes) {
+		
+	}
+
+	public BufferedImage bytesToBufferedImage(byte[] imgBytes) {
+		return new ImageIO.read(new ByteArrayInputStream(imgBytes));
+	}
+
+}

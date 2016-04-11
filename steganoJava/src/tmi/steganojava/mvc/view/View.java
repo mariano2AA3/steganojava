@@ -12,5 +12,9 @@ public interface View {
 	
 	public void showErrorMsg(String msg);
 	
+	public void showImgReadErrorMsg();
+	
+	public void showFileReadErrorMsg();
+	
 
 }
