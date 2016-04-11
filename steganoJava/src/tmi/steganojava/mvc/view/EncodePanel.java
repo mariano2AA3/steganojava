@@ -29,7 +29,7 @@ import javax.swing.JTextField;
 /**
  * TMI - StegoJava: application designed for encode and decode files into images
  * 
- * @author Mariano Hernandez García
+ * @author Mariano Hernandez Garcia
  */
 public class EncodePanel extends JPanel{
 	
@@ -63,12 +63,12 @@ public class EncodePanel extends JPanel{
 	
 	private void selectFile1Panel() {
 		JPanel selectFile1Panel = new JPanel(new BorderLayout());
-		selectFile1Panel.setPreferredSize(new Dimension(588, 80));
+		selectFile1Panel.setPreferredSize(new Dimension(635, 80));
 		selectFile1Panel.setBorder(BorderFactory.createTitledBorder(res.getString("title1")));
 		JPanel aux = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		
 		this.txtImage = new JTextField(res.getString("select1"));
-		this.txtImage.setPreferredSize(new Dimension(480, 27));
+		this.txtImage.setPreferredSize(new Dimension(520, 27));
 		this.txtImage.setEditable(false);
 		
 		this.imageLabel = new JLabel();
@@ -117,9 +117,10 @@ public class EncodePanel extends JPanel{
 	private void selectFile2Panel() {
 		JPanel selectFile2Panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		selectFile2Panel.setBorder(BorderFactory.createTitledBorder(res.getString("title2")));
+		selectFile2Panel.setPreferredSize(new Dimension(635, 60));
 		
 		this.txtFile = new JTextField(res.getString("select2"));
-		this.txtFile.setPreferredSize(new Dimension(480, 27));
+		this.txtFile.setPreferredSize(new Dimension(520, 27));
 		this.txtFile.setEditable(false);
 		
 		JButton bExamine = new JButton(res.getString("examine"));

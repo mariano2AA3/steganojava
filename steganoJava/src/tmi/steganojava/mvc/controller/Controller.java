@@ -5,13 +5,17 @@ import java.util.ArrayList;
 
 
 import tmi.steganojava.exceptions.ImgFormatException;
+import tmi.steganojava.mvc.view.MainWindow;
+import tmi.steganojava.mvc.view.View;
 
 public class Controller {
 	
 	private ArrayList<String> imgFormatAdmitted;
+	private View view;
 	
-	public Controller() {
+	public Controller(View w) {
 		this.imgFormatAdmitted = new ArrayList<String>();
+		this.view = w;
 		
 		// Add supported image format extentions
 		this.imgFormatAdmitted.add("bmp");

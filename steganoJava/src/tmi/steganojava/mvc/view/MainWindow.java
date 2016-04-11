@@ -43,7 +43,7 @@ public class MainWindow extends JFrame implements View {
 		super();
 		
 	/* Init variables */
-		this.dimension       = new Dimension(600, 490);
+		this.dimension       = new Dimension(650, 490);
 		this.resources 		 = res;
 		JLabel label         = new JLabel(res.getString("title"));
 		JTabbedPane pane     = new JTabbedPane();
@@ -63,7 +63,7 @@ public class MainWindow extends JFrame implements View {
 		label.setPreferredSize(new Dimension(200, 100));
 		label.setFont(new Font("Arial", Font.BOLD , 18));
 		
-		pane.setPreferredSize(new Dimension(600, 370));
+		pane.setPreferredSize(new Dimension(650, 370));
 		pane.add(res.getString("tabEncode"), encode);
 		pane.add(res.getString("tabDecode"), decode);
 		pane.add(res.getString("tabCredits"), credits);
