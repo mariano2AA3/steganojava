@@ -3,7 +3,6 @@ package tmi.steganojava.mvc.view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ResourceBundle;
@@ -23,7 +22,6 @@ public class DecodePanel extends JPanel {
 	private ResourceBundle res;
 	private JTextField txtFile;
 	private JPasswordField pass1;
-	private JButton bDecode;
 	
 	public DecodePanel(ResourceBundle res) {
 		super();
@@ -44,11 +42,11 @@ public class DecodePanel extends JPanel {
 	
 	private void selectFilePanel() {
 		JPanel selectFilePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		selectFilePanel.setPreferredSize(new Dimension(635, 60));
+		selectFilePanel.setPreferredSize(new Dimension(635, 80));
 		selectFilePanel.setBorder(BorderFactory.createTitledBorder(res.getString("title3")));
 		
 		this.txtFile = new JTextField(res.getString("select3"));
-		this.txtFile.setPreferredSize(new Dimension(520, 27));
+		this.txtFile.setPreferredSize(new Dimension(480, 27));
 		this.txtFile.setEditable(false);
 		
 		JButton bExamine = new JButton(res.getString("examine"));
@@ -59,7 +57,7 @@ public class DecodePanel extends JPanel {
 				JFileChooser fileChooser = new JFileChooser();
 				if ( fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION ) {
 					txtFile.setText(fileChooser.getSelectedFile().toString());
-					bDecode.setEnabled(true);
+					// ...
 				} 
 			}
 		});
@@ -73,11 +71,11 @@ public class DecodePanel extends JPanel {
 		
 		/* Init components */
 			JPanel optionsPanel = new JPanel(new BorderLayout());
-			JPanel pLeft = new JPanel(new GridLayout(5, 1));//(new FlowLayout(FlowLayout.LEFT));
-			JPanel pInf = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			JPanel pSup = new JPanel(new FlowLayout(FlowLayout.LEFT));
+			JPanel pInf = new JPanel(new FlowLayout(FlowLayout.LEFT));
 			
 			JLabel l1 = new JLabel(res.getString("selectAlg"));
-			optionsPanel.setPreferredSize(new Dimension(635, 150));
+			optionsPanel.setPreferredSize(new Dimension(480, 100));
 			JLabel l2 = new JLabel(res.getString("pass"));
 			this.pass1 = new JPasswordField(35);
 			
@@ -89,16 +87,16 @@ public class DecodePanel extends JPanel {
 			groupAlg.add(alg1);
 			groupAlg.add(alg2);
 			
-			
 		/* Config components */
 			optionsPanel.setBorder(BorderFactory.createTitledBorder(res.getString("label3")));
 					
 			
 		/* Add components to relative JPanels and JFrame */
-			pLeft.add(l1);
-			pLeft.add(alg1);
-			pLeft.add(alg2);
-			optionsPanel.add(pLeft, BorderLayout.WEST);
+			
+			pSup.add(l1);
+			pSup.add(alg1);
+			pSup.add(alg2);
+			optionsPanel.add(pSup, BorderLayout.NORTH);
 			pInf.add(l2);
 			pInf.add(this.pass1);
 			optionsPanel.add(pInf);
@@ -109,12 +107,10 @@ public class DecodePanel extends JPanel {
 	private void buttonsPanel() {
 		JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		
-		bDecode = new JButton(res.getString("tabDecode")); 
+		JButton bAccept = new JButton(res.getString("tabDecode")); 
 		JButton bClean= new JButton(res.getString("clean"));
 		
-		bDecode.setEnabled(false);
-		
-		bDecode.addActionListener(new ActionListener() {
+		bAccept.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -128,11 +124,10 @@ public class DecodePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				txtFile.setText(res.getString("select3"));
 				pass1.setText("");
-				bDecode.setEnabled(false);
 			}
 		});
 		
-		bottomPanel.add(bDecode);
+		bottomPanel.add(bAccept);
 		bottomPanel.add(bClean);
 		
 		this.add(bottomPanel);

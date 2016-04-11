@@ -23,7 +23,6 @@ public class DecodePanel extends JPanel {
 	private ResourceBundle res;
 	private JTextField txtFile;
 	private JPasswordField pass1;
-	private JButton bDecode;
 	
 	public DecodePanel(ResourceBundle res) {
 		super();
@@ -59,7 +58,7 @@ public class DecodePanel extends JPanel {
 				JFileChooser fileChooser = new JFileChooser();
 				if ( fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION ) {
 					txtFile.setText(fileChooser.getSelectedFile().toString());
-					bDecode.setEnabled(true);
+					// ...
 				} 
 			}
 		});
@@ -109,10 +108,8 @@ public class DecodePanel extends JPanel {
 	private void buttonsPanel() {
 		JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		
-		bDecode = new JButton(res.getString("tabDecode")); 
+		JButton bDecode = new JButton(res.getString("tabDecode")); 
 		JButton bClean= new JButton(res.getString("clean"));
-		
-		bDecode.setEnabled(false);
 		
 		bDecode.addActionListener(new ActionListener() {
 			
@@ -128,7 +125,6 @@ public class DecodePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				txtFile.setText(res.getString("select3"));
 				pass1.setText("");
-				bDecode.setEnabled(false);
 			}
 		});
 		
