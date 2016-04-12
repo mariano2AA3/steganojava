@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public interface StegoAlgorithm {
 	
-	public void encode(BufferedImage img, byte[] bytesFile);
+	public BufferedImage encode(BufferedImage img, byte[] bytesFile);
 	
 	public char[] decode(BufferedImage secretImg);
 	

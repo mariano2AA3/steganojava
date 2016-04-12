@@ -11,7 +11,9 @@ public class Lsb implements StegoAlgorithm {
 	
 	
 	@Override
-	public void encode(BufferedImage img, byte[] fileBytes) {
+	// Encode no escribe en disco!!
+	// Recibe una imagen (BufferedImage) y unos datos a ocultar (byte[]) y devuelve un BufferedImage con esos datos dentro
+	public BufferedImage encode(BufferedImage img, byte[] fileBytes) {
 		int[] arrayText = new int[(fileBytes.length*8)];
 		for(int i = 0; i < fileBytes.length; i++){
 			arrayText[i*7]     = (((int)(fileBytes[i])) & 0x1<<7)>>7;
@@ -52,6 +54,9 @@ public class Lsb implements StegoAlgorithm {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	    
+	    
+	    return null;
 	}
 
 	@Override
