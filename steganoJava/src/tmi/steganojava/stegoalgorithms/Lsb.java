@@ -57,13 +57,13 @@ public class Lsb implements StegoAlgorithm {
 			}
 		}
 		
-		File outputfile = new File("salida123.bmp");
+		/*File outputfile = new File("salida123.bmp");
 	    try {
 			ImageIO.write(img, "bmp", outputfile);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	    
 	    
 	    // Cambia esto por lo que sea!!
@@ -95,14 +95,19 @@ public class Lsb implements StegoAlgorithm {
 				relleno++;
 				if(relleno == 8){
 					x = charSeven[0]<<7 | charSeven[1]<<6 | charSeven[2]<<5 | charSeven[3]<<4 | charSeven[4]<<3 | charSeven[5]<<2 | charSeven[6]<<1 | charSeven[7]<<0;
+					if(x==255){
+						char[] arrayC = new char[avance];
+						for(int i = 0; i < arrayC.length; i++){
+							arrayC[i] = salidaString[i];
+						}
+						return arrayC;
+					}
+					
 					salidaString[avance]=(char)x;
 					avance++;
 					System.out.print((char)x);
 				}
 				
-				if(x==255){
-					return salidaString;
-				}
 				
 				relleno = (relleno) % 8;				
 					

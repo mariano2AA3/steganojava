@@ -3,12 +3,15 @@ package tmi.steganojava.mvc.controller;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
 import tmi.steganojava.exceptions.ImgFormatException;
+import tmi.steganojava.mvc.view.MainWindow;
 import tmi.steganojava.mvc.view.View;
 import tmi.steganojava.stegoalgorithms.Lsb;
 import tmi.steganojava.utils.ReadWriteFile;
@@ -81,9 +84,7 @@ public class Controller {
 	
 
 	public void encode(String imgPath, String filePath, String alg) {
-		System.out.println("ok?");
-		this.encodeAux(imgPath, filePath, alg, null);
-		
+		this.encodeAux(imgPath, filePath, alg, null);		
 	}
 	
 	
@@ -103,8 +104,31 @@ public class Controller {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		char[] fileBytes = getLsbInstance().decode(img);
-		System.out.println("haha");
+		byte[] arrayB = new String(getLsbInstance().decode(img)).getBytes();
+		
+		//////////////////////////////////////////////////
+		//FileInputStream fileInputStream=null;
+        
+        //File file = new File("testing");
+        
+       // byte[] bFile = new byte[(int) file.length()];
+		/*byte[] arrayC = new byte[5];
+		for(int i = 0; i < arrayC.length; i++){
+			arrayC[i] = arrayB[i];
+		}*/
+		
+        try {		   
+        	//FileUtils.write
+		    //convert array of bytes into file
+		    FileOutputStream fileOuputStream =  new FileOutputStream("testing2"); 
+		    fileOuputStream.write(arrayB);
+		    fileOuputStream.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+		
+		
+		System.out.println("end decode");
 	}
 	
 	
@@ -165,11 +189,11 @@ public class Controller {
 				// Writes cover image to disk...
 				File outputfile = new File("salida_oculta.bmp");
 			    ImageIO.write(bufferedimgSecret, "bmp", outputfile);
-				//ImageIO.write(bufferedimgSecret, this.getFileExtention(imgPath), out);
-				//out.flush();
-				//this.rwFile.writeFile(imgPath + "_secret_." + this.getFileExtention(imgPath), out.toByteArray());
-				//out.close();
-				//this.view.showInfoMsg("Great!! Your secret image has been created");
+				/*ImageIO.write(bufferedimgSecret, this.getFileExtention(imgPath), out);
+				out.flush();
+				this.rwFile.writeFile(imgPath + "_secret_." + this.getFileExtention(imgPath), out.toByteArray());
+				out.close();
+				this.view.showInfoMsg("Great!! Your secret image has been created");*/
 			}
 			else {
 				this.view.showErrorMsg("Error: file size is bigger than image size. Please use larger image or change the algorithm.");

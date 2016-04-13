@@ -120,7 +120,6 @@ public class DecodePanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pass1.setText("");
-				System.out.println("cagondios");
 				try {
 					MainWindow.controller.decode(txtFile.getText(), "");
 				} catch (IOException e1) {
