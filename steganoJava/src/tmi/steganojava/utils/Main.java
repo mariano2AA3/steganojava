@@ -3,12 +3,7 @@ package tmi.steganojava.utils;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-
-import com.sun.org.apache.bcel.internal.util.ByteSequence;
-
-import sun.text.normalizer.UTF16;
 import tmi.steganojava.exceptions.ImgFormatException;
 
 public class Main {

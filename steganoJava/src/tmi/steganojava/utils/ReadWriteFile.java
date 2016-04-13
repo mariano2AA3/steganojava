@@ -10,6 +10,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import javax.activation.MimetypesFileTypeMap;
 import javax.imageio.ImageIO;
 import tmi.steganojava.exceptions.ImgFormatException;
 
@@ -20,6 +22,7 @@ import tmi.steganojava.exceptions.ImgFormatException;
  *
  */
 public class ReadWriteFile {
+	
 
 	/**
 	 * This function use ImageIO for reading an image and store it into a BufferedImage. Use only for reading IMAGES!

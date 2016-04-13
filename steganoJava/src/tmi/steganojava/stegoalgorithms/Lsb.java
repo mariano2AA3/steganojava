@@ -56,7 +56,8 @@ public class Lsb implements StegoAlgorithm {
 		}
 	    
 	    
-	    return null;
+	    // Cambia esto por lo que sea!!
+	    return img;
 	}
 
 	@Override
