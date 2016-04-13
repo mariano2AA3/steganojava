@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -119,6 +120,13 @@ public class DecodePanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pass1.setText("");
+				System.out.println("cagondios");
+				try {
+					MainWindow.controller.decode(txtFile.getText(), "");
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		

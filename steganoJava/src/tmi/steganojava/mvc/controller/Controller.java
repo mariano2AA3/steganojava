@@ -2,6 +2,7 @@ package tmi.steganojava.mvc.controller;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -28,6 +29,7 @@ public class Controller {
 		this.imgFormatAdmitted = new ArrayList<String>();
 		this.view 			   = w;
 		
+		
 		// Add supported image format extentions
 		this.imgFormatAdmitted.add("bmp");
 	}
@@ -47,7 +49,7 @@ public class Controller {
 	
 	
 	/**
-	 * This functions estimates the avaiable image space to encode files, using specified algorithm.
+	 * This functions estimates the available image space to encode files, using specified algorithm.
 	 *   
 	 * @param imgPath: the path of the image.
 	 * @param alg: the algorithm using
@@ -56,21 +58,32 @@ public class Controller {
 	 * @throws IOException
 	 */
 	public float calculateImgEncodeAvaiableSize(String imgPath, String alg) {
+		float cal = 10.0f;
+		BufferedImage img = null;
+		try {
+			img = ImageIO.read(new File(imgPath));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		switch (alg) {
-			case "LSb":
+			case "LSB":
 				// 
+				cal = getLsbInstance().getImgEncodeSpace(img);
+				
 			break;
 
 		default:
 			break;
 		}
-		return 10;
+		return cal;
 	}
 	
 
 	public void encode(String imgPath, String filePath, String alg) {
-		
+		System.out.println("ok?");
 		this.encodeAux(imgPath, filePath, alg, null);
+		
 	}
 	
 	
@@ -83,6 +96,15 @@ public class Controller {
 	
 	
 	public void decode(String imgPath, String alg) throws IOException {
+		BufferedImage img = null;
+		try {
+			img = ImageIO.read(new File(imgPath));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		char[] fileBytes = getLsbInstance().decode(img);
+		System.out.println("haha");
 	}
 	
 	
@@ -141,11 +163,13 @@ public class Controller {
 				
 				
 				// Writes cover image to disk...
-				ImageIO.write(bufferedimgSecret, this.getFileExtention(imgPath), out);
-				out.flush();
-				this.rwFile.writeFile(imgPath + "_secret_." + this.getFileExtention(imgPath), out.toByteArray());
-				out.close();
-				this.view.showInfoMsg("Great!! Your secret image has been created");
+				File outputfile = new File("salida_oculta.bmp");
+			    ImageIO.write(bufferedimgSecret, "bmp", outputfile);
+				//ImageIO.write(bufferedimgSecret, this.getFileExtention(imgPath), out);
+				//out.flush();
+				//this.rwFile.writeFile(imgPath + "_secret_." + this.getFileExtention(imgPath), out.toByteArray());
+				//out.close();
+				//this.view.showInfoMsg("Great!! Your secret image has been created");
 			}
 			else {
 				this.view.showErrorMsg("Error: file size is bigger than image size. Please use larger image or change the algorithm.");
