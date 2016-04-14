@@ -13,7 +13,7 @@ public class Lsb implements StegoAlgorithm {
 	@Override
 	// Encode no escribe en disco!!
 	// Recibe una imagen (BufferedImage) y unos datos a ocultar (byte[]) y devuelve un BufferedImage con esos datos dentro
-	public BufferedImage encode(BufferedImage img, byte[] fileBytes) {
+	public BufferedImage encode(BufferedImage img, byte[] fileBytes) {		
 		int[] arrayText = new int[(fileBytes.length*8)+8];
 		for(int i = 0; i < fileBytes.length; i++){
 			arrayText[i*8]     = (((int)(fileBytes[i])) & 0x1<<7)>>7;
@@ -56,26 +56,17 @@ public class Lsb implements StegoAlgorithm {
 				}	
 			}
 		}
-		
-		/*File outputfile = new File("salida123.bmp");
-	    try {
-			ImageIO.write(img, "bmp", outputfile);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-	    
-	    
-	    // Cambia esto por lo que sea!!
 	    return img;
 	}
 
 	@Override
-	public char[] decode(BufferedImage secretImg) {
-		char[] salidaString = new char[secretImg.getHeight()*secretImg.getWidth()/8];
+	public byte[] decode(BufferedImage secretImg) {
+		byte[] salidaString = new byte[secretImg.getHeight()*secretImg.getWidth()/8];
+		int[] salidaInt = new int[secretImg.getHeight()*secretImg.getWidth()/8];
 		int relleno = 0;
 		int avance = 0;
-		int color,red,green,blue,pos,x;//mantener para posible codificacion en los otros colores
+		int color,red,green,blue,pos;//mantener para posible codificacion en los otros colores
+		int x;
 		int[] charSeven = new int[8];
 		for (int xPixel = 0; xPixel < secretImg.getWidth(); xPixel++) {
 			for (int yPixel = 0; yPixel < secretImg.getHeight(); yPixel++) {
@@ -94,23 +85,20 @@ public class Lsb implements StegoAlgorithm {
 				charSeven[relleno]=red;
 				relleno++;
 				if(relleno == 8){
-					x = charSeven[0]<<7 | charSeven[1]<<6 | charSeven[2]<<5 | charSeven[3]<<4 | charSeven[4]<<3 | charSeven[5]<<2 | charSeven[6]<<1 | charSeven[7]<<0;
-					if(x==255){
-						char[] arrayC = new char[avance];
+					x = (charSeven[0]<<7 | charSeven[1]<<6 | charSeven[2]<<5 | charSeven[3]<<4 | charSeven[4]<<3 | charSeven[5]<<2 | charSeven[6]<<1 | charSeven[7]<<0);
+					System.out.println((byte)x);
+					if((byte)x==(byte)0xFF){
+						byte[] arrayC = new byte[avance];
 						for(int i = 0; i < arrayC.length; i++){
 							arrayC[i] = salidaString[i];
 						}
 						return arrayC;
 					}
-					
-					salidaString[avance]=(char)x;
+					salidaInt[avance]= x;
+					salidaString[avance]=(byte)x;
 					avance++;
-					System.out.print((char)x);
-				}
-				
-				
-				relleno = (relleno) % 8;				
-					
+				}				
+				relleno = (relleno) % 8;								
 			}
 		}
 		return salidaString;

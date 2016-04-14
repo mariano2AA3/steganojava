@@ -25,6 +25,7 @@ public class DecodePanel extends JPanel {
 	private JTextField txtFile;
 	private JPasswordField pass1;
 	private JButton bDecode;
+	private ButtonGroup groupAlg;
 	
 	public DecodePanel(ResourceBundle res) {
 		super();
@@ -86,7 +87,7 @@ public class DecodePanel extends JPanel {
 			alg1.setActionCommand(res.getString("alg1"));
 			JRadioButton alg2 = new JRadioButton(res.getString("alg2"), false);
 			alg2.setActionCommand(res.getString("alg2"));
-			ButtonGroup groupAlg = new ButtonGroup();
+			groupAlg = new ButtonGroup();
 			groupAlg.add(alg1);
 			groupAlg.add(alg2);
 			
@@ -120,12 +121,15 @@ public class DecodePanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pass1.setText("");
-				try {
-					MainWindow.controller.decode(txtFile.getText(), "");
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				if ( pass1.getPassword().length == 0 ) {
+					
+					MainWindow.controller.decode(txtFile.getText(), groupAlg.getSelection().getActionCommand());
+	
+				}else {
+					//MainWindow.controller.decodeAndEncrypt(imgPath, filePath, groupAlg.getSelection().getActionCommand(), String.valueOf(pass1.getPassword()));
 				}
+				
+				
 			}
 		});
 		

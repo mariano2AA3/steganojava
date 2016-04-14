@@ -89,46 +89,14 @@ public class Controller {
 	
 	
 	
-	public void encodeAndEncrypt(String imgPath, String filePath, String alg, String password) {
-		
+	public void encodeAndEncrypt(String imgPath, String filePath, String alg, String password) {	
 		this.encodeAux(imgPath, filePath, alg, password);
 	}
 	
 	
 	
-	public void decode(String imgPath, String alg) throws IOException {
-		BufferedImage img = null;
-		try {
-			img = ImageIO.read(new File(imgPath));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		byte[] arrayB = new String(getLsbInstance().decode(img)).getBytes();
-		
-		//////////////////////////////////////////////////
-		//FileInputStream fileInputStream=null;
-        
-        //File file = new File("testing");
-        
-       // byte[] bFile = new byte[(int) file.length()];
-		/*byte[] arrayC = new byte[5];
-		for(int i = 0; i < arrayC.length; i++){
-			arrayC[i] = arrayB[i];
-		}*/
-		
-        try {		   
-        	//FileUtils.write
-		    //convert array of bytes into file
-		    FileOutputStream fileOuputStream =  new FileOutputStream("testing2"); 
-		    fileOuputStream.write(arrayB);
-		    fileOuputStream.close();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-		
-		
-		System.out.println("end decode");
+	public void decode(String imgPath, String alg){
+		this.decodeAux(imgPath, alg);
 	}
 	
 	
@@ -136,15 +104,47 @@ public class Controller {
 	public void DecryptAndDecode(String imgPath, String alg, String password) {
 	}
 
-	public String getSupportedFormatString() {
-		
+	public String getSupportedFormatString() {	
 		return this.imgFormatAdmitted.toString();
 	}
 	
 	
-	private String getFileExtention(String filePath) {
-		
+	private String getFileExtention(String filePath) {	
 		return filePath.substring(filePath.lastIndexOf(".") + 1, filePath.length());
+	}
+	
+	private void decodeAux(String imgPath, String alg){
+		byte[] fileBytes;
+		BufferedImage bufferedImg = null; 
+		try {
+			System.out.println("INFO:");
+			System.out.println(" |- Reading encode file... ");
+			bufferedImg = this.rwFile.readImg(imgPath);	
+			System.out.println(" |- Decoding image: " + imgPath);
+			System.out.println(" |- Decoding using algotithm: " + alg);
+			
+			switch (alg) {	
+				case "LSB":						
+					fileBytes = getLsbInstance().decode(bufferedImg);
+				break;
+	
+				default:
+					this.view.showErrorMsg("Error: Unknown Encoding algorithm!");
+					return;
+				
+			}
+						
+	        try {	      	
+	        	System.out.println(" |- Writting hidden object into file: \"DecodedFile\"");
+	        	this.rwFile.writeFile("DecodedFile", fileBytes);
+	        }catch(Exception e){
+	        	this.view.showErrorMsg("Error: can't write file");
+	        }
+		} catch (IOException e) {
+			this.view.showImgReadErrorMsg();
+		} catch (ImgFormatException e) {
+			this.view.showErrorMsg("Error: image format not supported");
+		}	
 	}
 	
 	private void encodeAux(String imgPath, String filePath, String alg, String password) {
@@ -185,15 +185,15 @@ public class Controller {
 					
 				}
 				
-				
+
 				// Writes cover image to disk...
-				File outputfile = new File("salida_oculta.bmp");
-			    ImageIO.write(bufferedimgSecret, "bmp", outputfile);
-				/*ImageIO.write(bufferedimgSecret, this.getFileExtention(imgPath), out);
+				//File outputfile = new File("salida_oculta.bmp");
+			    //ImageIO.write(bufferedimgSecret, "bmp", outputfile);
+				ImageIO.write(bufferedimgSecret, this.getFileExtention(imgPath), out);
 				out.flush();
 				this.rwFile.writeFile(imgPath + "_secret_." + this.getFileExtention(imgPath), out.toByteArray());
 				out.close();
-				this.view.showInfoMsg("Great!! Your secret image has been created");*/
+				this.view.showInfoMsg("Great!! Your secret image has been created");
 			}
 			else {
 				this.view.showErrorMsg("Error: file size is bigger than image size. Please use larger image or change the algorithm.");
