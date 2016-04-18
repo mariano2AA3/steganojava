@@ -3,18 +3,30 @@ package tmi.steganojava.stegoalgorithms;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 
+import javafx.util.Pair;
+
 public class Lsb implements StegoAlgorithm {
 	
 	
 	@Override
 	public BufferedImage encode(BufferedImage img, byte[] fileBytes) {	
-		int input = fileBytes.length;
+		
+		/////
+		String ext = "bmp ";	//4 de longitud siempre
+		char[] extension = new char[ext.length()];
+		for(int i = 0; i < ext.length(); i++){
+			extension[i] = ext.charAt(i);
+		}
+		/////
+		
+		
+		int input = fileBytes.length+4;
 		boolean[] bits = new boolean[24+(input*8)];
 	    for (int i = 23; i >= 0; i--) {
 	        bits[i] = (input & (1 << i)) != 0;
 	    }
 	    
-	    for(int i = 0; i < fileBytes.length; i++){
+	    for(int i = 0; i < fileBytes.length-(4*8); i++){
 	    	bits[i*8+24]     = (((fileBytes[i])) & 0x1<<7)>>7 != 0;
 	    	bits[(i*8)+1+24] = (((fileBytes[i])) & 0x1<<6)>>6 != 0;
 	    	bits[(i*8)+2+24] = (((fileBytes[i])) & 0x1<<5)>>5 != 0;
@@ -24,6 +36,17 @@ public class Lsb implements StegoAlgorithm {
 	    	bits[(i*8)+6+24] = (((fileBytes[i])) & 0x1<<1)>>1 != 0;
 			bits[(i*8)+7+24] = (((fileBytes[i])) & 0x1<<0)>>0 != 0;
 		}
+	    
+	    for(int i = 0; i < 4; i++){
+	    	bits[((fileBytes.length+i)*8)+24]   = (((extension[i])) & 0x1<<7)>>7 != 0;
+	    	bits[((fileBytes.length+i)*8)+24+1] = (((extension[i])) & 0x1<<6)>>6 != 0;
+	    	bits[((fileBytes.length+i)*8)+24+2] = (((extension[i])) & 0x1<<5)>>5 != 0;
+	    	bits[((fileBytes.length+i)*8)+24+3] = (((extension[i])) & 0x1<<4)>>4 != 0;
+	    	bits[((fileBytes.length+i)*8)+24+4] = (((extension[i])) & 0x1<<3)>>3 != 0;
+	    	bits[((fileBytes.length+i)*8)+24+5] = (((extension[i])) & 0x1<<2)>>2 != 0;
+	    	bits[((fileBytes.length+i)*8)+24+6] = (((extension[i])) & 0x1<<1)>>1 != 0;
+	    	bits[((fileBytes.length+i)*8)+24+7] = (((extension[i])) & 0x1<<0)>>0 != 0;
+	    }
 	    
 		boolean leave = false;
 		int color,red,green,blue,pos;
@@ -49,7 +72,7 @@ public class Lsb implements StegoAlgorithm {
 	}
 	
 	@Override
-	public byte[] decode(BufferedImage secretImg) {	
+	public Pair<byte[], Character[]> decode(BufferedImage secretImg) {	
 		int color,red,green,blue;//mantener para posible codificacion en los otros colores	
 		
 		// Here we get the size of the hidden file (boolean bits[])
@@ -108,9 +131,13 @@ public class Lsb implements StegoAlgorithm {
 			xPixel++;
 		}	
 
-		
-		
-		return byteExit;
+		Character[] salida = new Character[4];
+		if(byteExit[byteExit.length-4]!=0)salida[0] = (char)byteExit[byteExit.length-4];
+		if(byteExit[byteExit.length-3]!=0)salida[1] = (char)byteExit[byteExit.length-3];
+		if(byteExit[byteExit.length-2]!=0)salida[2] = (char)byteExit[byteExit.length-2];
+		if(byteExit[byteExit.length-1]!=0)salida[3] = (char)byteExit[byteExit.length-1];
+				
+		return new Pair<byte[], Character[]>(byteExit, salida);
 	}
 
 	@Override

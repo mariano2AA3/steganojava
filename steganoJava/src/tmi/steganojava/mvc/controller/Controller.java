@@ -7,6 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import javafx.util.Pair;
 
 import javax.imageio.ImageIO;
 
@@ -122,10 +125,10 @@ public class Controller {
 			bufferedImg = this.rwFile.readImg(imgPath);	
 			System.out.println(" |- Decoding image: " + imgPath);
 			System.out.println(" |- Decoding using algotithm: " + alg);
-			
+			Pair<byte[], Character[]> pair;
 			switch (alg) {	
 				case "LSB":						
-					fileBytes = getLsbInstance().decode(bufferedImg);
+					pair = getLsbInstance().decode(bufferedImg);
 				break;
 	
 				default:
@@ -133,10 +136,17 @@ public class Controller {
 					return;
 				
 			}
-						
-	        try {	      	
-	        	System.out.println(" |- Writting hidden object into file: \"DecodedFile\"");
-	        	this.rwFile.writeFile("DecodedFile", fileBytes);
+			Character[] chares = pair.getValue();
+			String decodedFileString = "DecodedFile.";
+			for(int i = 0; i < chares.length; i++){
+				if(chares[i]!=' '){
+					decodedFileString = decodedFileString.concat(""+chares[i]);
+				}
+			}
+	        try {	     
+	        	byte[] newArray = Arrays.copyOfRange(pair.getKey(), 0, pair.getKey().length-4);
+	        	System.out.println(" |- Writting hidden object into file: \""+ decodedFileString +"\"");
+	        	this.rwFile.writeFile("salida", newArray);
 	        }catch(Exception e){
 	        	this.view.showErrorMsg("Error: can't write file");
 	        }
