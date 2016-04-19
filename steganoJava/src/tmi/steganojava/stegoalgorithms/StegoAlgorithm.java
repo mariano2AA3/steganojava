@@ -2,7 +2,7 @@ package tmi.steganojava.stegoalgorithms;
 
 import java.awt.image.BufferedImage;
 
-import javafx.util.Pair;
+import tmi.steganojava.utils.Pair;
 
 public interface StegoAlgorithm {
 	

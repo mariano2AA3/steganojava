@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javafx.util.Pair;
+import tmi.steganojava.utils.Pair;
 
 import javax.imageio.ImageIO;
 
@@ -21,6 +21,8 @@ import tmi.steganojava.utils.ReadWriteFile;
 import tmi.steganojava.utils.Security;
 
 public class Controller {
+	
+	private byte[] borraresto;
 	
 	private ReadWriteFile rwFile;
 	 
@@ -117,7 +119,6 @@ public class Controller {
 	}
 	
 	private void decodeAux(String imgPath, String alg){
-		byte[] fileBytes;
 		BufferedImage bufferedImg = null; 
 		try {
 			System.out.println("INFO:");
@@ -136,17 +137,17 @@ public class Controller {
 					return;
 				
 			}
-			Character[] chares = pair.getValue();
-			String decodedFileString = "DecodedFile.";
+			Character[] chares = pair.getRight();
+			String decodedFileString = "DecodedFile";
+			String decodedFileMime   = "";
 			for(int i = 0; i < chares.length; i++){
 				if(chares[i]!=' '){
-					decodedFileString = decodedFileString.concat(""+chares[i]);
+					decodedFileMime = decodedFileMime.concat(""+chares[i]);
 				}
 			}
-	        try {	     
-	        	byte[] newArray = Arrays.copyOfRange(pair.getKey(), 0, pair.getKey().length-4);
+	        try {	             	
 	        	System.out.println(" |- Writting hidden object into file: \""+ decodedFileString +"\"");
-	        	this.rwFile.writeFile("salida", newArray);
+	        	this.rwFile.writeFile(decodedFileString, pair.getLeft());
 	        }catch(Exception e){
 	        	this.view.showErrorMsg("Error: can't write file");
 	        }
@@ -170,7 +171,7 @@ public class Controller {
 			bufferedImg = this.rwFile.readImg(imgPath);
 			System.out.println(" |- reading file... ");
 			fileBytes   = this.rwFile.readFile(filePath);
-			
+			borraresto = this.rwFile.readFile(filePath);
 			// Checks if file fits into image...
 			if ( this.calculateImgEncodeAvaiableSize(imgPath, alg) * 1024 >= fileBytes.length ) {
 				System.out.println(" |- Encoding file: " + filePath + " in image: " + imgPath);

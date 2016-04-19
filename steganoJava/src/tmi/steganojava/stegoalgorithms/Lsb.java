@@ -2,8 +2,11 @@ package tmi.steganojava.stegoalgorithms;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 
-import javafx.util.Pair;
+import sun.rmi.runtime.Log;
+import sun.util.logging.resources.logging;
+import tmi.steganojava.utils.Pair;
 
 public class Lsb implements StegoAlgorithm {
 	
@@ -26,7 +29,7 @@ public class Lsb implements StegoAlgorithm {
 	        bits[i] = (input & (1 << i)) != 0;
 	    }
 	    
-	    for(int i = 0; i < fileBytes.length-(4*8); i++){
+	    for(int i = 0; i < fileBytes.length; i++){
 	    	bits[i*8+24]     = (((fileBytes[i])) & 0x1<<7)>>7 != 0;
 	    	bits[(i*8)+1+24] = (((fileBytes[i])) & 0x1<<6)>>6 != 0;
 	    	bits[(i*8)+2+24] = (((fileBytes[i])) & 0x1<<5)>>5 != 0;
@@ -120,7 +123,7 @@ public class Lsb implements StegoAlgorithm {
 				if(relleno == 8){
 					b = (byte)((byteEight[0]?1<<7:0) + (byteEight[1]?1<<6:0) + (byteEight[2]?1<<5:0) + 
 			                   (byteEight[3]?1<<4:0) + (byteEight[4]?1<<3:0) + (byteEight[5]?1<<2:0) + 
-			                   (byteEight[6]?1<<1:0) + (byteEight[7]?1:0));				
+			                   (byteEight[6]?1<<1:0) + (byteEight[7]?1:0));	
 					byteExit[count] = b;
 					count++;
 				}				
@@ -136,13 +139,13 @@ public class Lsb implements StegoAlgorithm {
 		if(byteExit[byteExit.length-3]!=0)salida[1] = (char)byteExit[byteExit.length-3];
 		if(byteExit[byteExit.length-2]!=0)salida[2] = (char)byteExit[byteExit.length-2];
 		if(byteExit[byteExit.length-1]!=0)salida[3] = (char)byteExit[byteExit.length-1];
-				
-		return new Pair<byte[], Character[]>(byteExit, salida);
+		byte[] newArray = Arrays.copyOfRange(byteExit, 0, byteExit.length-4);		
+		return new Pair<byte[], Character[]>(newArray, salida);
 	}
 
 	@Override
 	public float getImgEncodeSpace(BufferedImage img) {
-		return img.getHeight() * img.getWidth() /  8000000.0f;
+		return ((((img.getHeight() * img.getWidth())-56 / 8.0f) /1024.0f) /1024.0f);
 	}
 
 }
