@@ -173,8 +173,8 @@ public class Controller {
 			bufferedImg = this.rwFile.readImg(imgPath);
 			System.out.println(" |- reading file... ");
 			fileBytes   = this.rwFile.readFile(filePath);
-			mime = this.getFileExtention(imgPath);
 			
+			mime = this.getFileExtention(filePath);			
 			for(int i = 0; i < 4;i++){
 				if(i<mime.length()){
 					mimeArray[i] = mime.charAt(i);
