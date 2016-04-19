@@ -12,15 +12,15 @@ public class Lsb implements StegoAlgorithm {
 	
 	
 	@Override
-	public BufferedImage encode(BufferedImage img, byte[] fileBytes) {	
+	public BufferedImage encode(BufferedImage img, byte[] fileBytes,char[] extension) {	
 		
-		/////
+		/*/////
 		String ext = "bmp ";	//4 de longitud siempre
 		char[] extension = new char[ext.length()];
 		for(int i = 0; i < ext.length(); i++){
 			extension[i] = ext.charAt(i);
 		}
-		/////
+		/////*/
 		
 		
 		int input = fileBytes.length+4;
@@ -105,7 +105,7 @@ public class Lsb implements StegoAlgorithm {
 		count = 0;
 		int top = n;
 		int relleno = 0;
-		boolean[] byteEight = new boolean[8];
+		bits = new boolean[8];
 		byte[] byteExit = new byte[top];
 		byte b;
 		while(xPixel < secretImg.getWidth() && count < top){
@@ -118,12 +118,12 @@ public class Lsb implements StegoAlgorithm {
 				
 				red  = red & 0x1<<0;
 				
-				byteEight[relleno]=(red != 0);
+				bits[relleno]=(red != 0);
 				relleno++;
 				if(relleno == 8){
-					b = (byte)((byteEight[0]?1<<7:0) + (byteEight[1]?1<<6:0) + (byteEight[2]?1<<5:0) + 
-			                   (byteEight[3]?1<<4:0) + (byteEight[4]?1<<3:0) + (byteEight[5]?1<<2:0) + 
-			                   (byteEight[6]?1<<1:0) + (byteEight[7]?1:0));	
+					b = (byte)((bits[0]?1<<7:0) + (bits[1]?1<<6:0) + (bits[2]?1<<5:0) + 
+			                   (bits[3]?1<<4:0) + (bits[4]?1<<3:0) + (bits[5]?1<<2:0) + 
+			                   (bits[6]?1<<1:0) + (bits[7]?1:0));	
 					byteExit[count] = b;
 					count++;
 				}				

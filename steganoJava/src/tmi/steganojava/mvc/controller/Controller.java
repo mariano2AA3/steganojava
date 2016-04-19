@@ -22,8 +22,6 @@ import tmi.steganojava.utils.Security;
 
 public class Controller {
 	
-	private byte[] borraresto;
-	
 	private ReadWriteFile rwFile;
 	 
 	private static Lsb lsbInstanceLsb = null;	
@@ -145,9 +143,11 @@ public class Controller {
 					decodedFileMime = decodedFileMime.concat(""+chares[i]);
 				}
 			}
+			decodedFileString = decodedFileString.concat(".").concat(decodedFileMime);
 	        try {	             	
 	        	System.out.println(" |- Writting hidden object into file: \""+ decodedFileString +"\"");
 	        	this.rwFile.writeFile(decodedFileString, pair.getLeft());
+	        	this.view.showInfoMsg("Great!! Your hidden file has been rebuilt");
 	        }catch(Exception e){
 	        	this.view.showErrorMsg("Error: can't write file");
 	        }
@@ -161,9 +161,11 @@ public class Controller {
 	private void encodeAux(String imgPath, String filePath, String alg, String password) {
 		
 		byte[] fileBytes;
+		char[] mimeArray                 = new char[4];
 		BufferedImage bufferedImg        = null;
 		BufferedImage bufferedimgSecret  = null;
 		ByteArrayOutputStream out        = new ByteArrayOutputStream();
+		String mime;
 		
 		try {
 			System.out.println("INFO:");
@@ -171,7 +173,16 @@ public class Controller {
 			bufferedImg = this.rwFile.readImg(imgPath);
 			System.out.println(" |- reading file... ");
 			fileBytes   = this.rwFile.readFile(filePath);
-			borraresto = this.rwFile.readFile(filePath);
+			mime = this.getFileExtention(imgPath);
+			
+			for(int i = 0; i < 4;i++){
+				if(i<mime.length()){
+					mimeArray[i] = mime.charAt(i);
+				}else{
+					mimeArray[i] = ' ';
+				}
+			}
+			
 			// Checks if file fits into image...
 			if ( this.calculateImgEncodeAvaiableSize(imgPath, alg) * 1024 >= fileBytes.length ) {
 				System.out.println(" |- Encoding file: " + filePath + " in image: " + imgPath);
@@ -187,7 +198,7 @@ public class Controller {
 				switch (alg) {
 		
 					case "LSB":						
-						bufferedimgSecret = getLsbInstance().encode(bufferedImg, fileBytes);
+						bufferedimgSecret = getLsbInstance().encode(bufferedImg, fileBytes,mimeArray);
 					break;
 		
 					default:
