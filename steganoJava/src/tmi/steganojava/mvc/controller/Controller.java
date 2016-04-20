@@ -3,22 +3,19 @@ package tmi.steganojava.mvc.controller;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import tmi.steganojava.utils.Pair;
 
 import javax.imageio.ImageIO;
 
 import tmi.steganojava.exceptions.ImgFormatException;
-import tmi.steganojava.mvc.view.MainWindow;
+//import tmi.steganojava.mvc.view.MainWindow;
 import tmi.steganojava.mvc.view.View;
 import tmi.steganojava.stegoalgorithms.Lsb;
 import tmi.steganojava.utils.ReadWriteFile;
-import tmi.steganojava.utils.Security;
+//import tmi.steganojava.utils.Security;
 
 public class Controller {
 	
