@@ -15,7 +15,8 @@ import tmi.steganojava.exceptions.ImgFormatException;
 import tmi.steganojava.mvc.view.View;
 import tmi.steganojava.stegoalgorithms.Lsb;
 import tmi.steganojava.utils.ReadWriteFile;
-//import tmi.steganojava.utils.Security;
+import tmi.steganojava.utils.Security;
+import tmi.steganojava.utils.Security.InvalidPasswordException;
 
 public class Controller {
 	
@@ -96,12 +97,13 @@ public class Controller {
 	
 	
 	public void decode(String imgPath, String alg){
-		this.decodeAux(imgPath, alg);
+		this.decodeAux(imgPath, alg, null);
 	}
 	
 	
 	
 	public void DecryptAndDecode(String imgPath, String alg, String password) {
+		this.decodeAux(imgPath, alg, password);
 	}
 
 	public String getSupportedFormatString() {	
@@ -113,8 +115,9 @@ public class Controller {
 		return filePath.substring(filePath.lastIndexOf(".") + 1, filePath.length());
 	}
 	
-	private void decodeAux(String imgPath, String alg){
-		BufferedImage bufferedImg = null; 
+	private void decodeAux(String imgPath, String alg, String password){
+		BufferedImage bufferedImg = null;
+		byte[] fileBytes = null;
 		try {
 			System.out.println("INFO:");
 			System.out.println(" |- Reading encode file... ");
@@ -141,9 +144,24 @@ public class Controller {
 				}
 			}
 			decodedFileString = decodedFileString.concat(".").concat(decodedFileMime);
+			
+			if (password != null) {
+				try{
+					fileBytes = Security.decrypt(pair.getLeft(), password);
+				}
+				catch (InvalidPasswordException e){
+					this.view.showErrorMsg("Error: Invalid password.");
+				}
+				catch (Exception e){
+					this.view.showErrorMsg("Error to decrypt file.");
+				}
+			}
+			else {
+				fileBytes = pair.getLeft();
+			}
 	        try {	             	
 	        	System.out.println(" |- Writting hidden object into file: \""+ decodedFileString +"\"");
-	        	this.rwFile.writeFile(decodedFileString, pair.getLeft());
+	        	this.rwFile.writeFile(decodedFileString, fileBytes);
 	        	this.view.showInfoMsg("Great!! Your hidden file has been rebuilt");
 	        }catch(Exception e){
 	        	this.view.showErrorMsg("Error: can't write file");
@@ -187,9 +205,13 @@ public class Controller {
 				
 				// If user check PasswordChechBox, then file byte array will be encrypted...
 				if ( password != null ) {
-					System.out.println("|- encrypting file using password");
-					// Encrypt file...
-					// fileBytes = ...
+					try {
+						System.out.println("|- encrypting file using password");
+						fileBytes = Security.encrypt(fileBytes, password);
+					}
+					catch(Exception e){
+						this.view.showErrorMsg("Error to encrypt file using password.");
+					}
 				}
 				
 				switch (alg) {

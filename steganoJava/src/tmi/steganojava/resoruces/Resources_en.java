@@ -10,7 +10,7 @@ import java.util.Set;
 public class Resources_en extends ResourceBundle {
 
 	public Object handleGetObject(String key) {
-		if (key.equals("title")) return "TMI - StegoJava";
+		if (key.equals("title")) return "TMI - SteganoJava";
 		if (key.equals("tabEncode")) return "Encode";
 		if (key.equals("tabDecode")) return "Decode";
 		if (key.equals("tabCredits")) return "Credits";
