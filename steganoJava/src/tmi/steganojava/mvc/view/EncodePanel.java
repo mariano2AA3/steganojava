@@ -88,13 +88,14 @@ public class EncodePanel extends JPanel{
 						imageLabel.setText(res.getString("errorImgFormat") +  MainWindow.controller.getSupportedFormatString());
 					}
 					else { 
+						/*
 						bEncodeReady++;
 						if ( bEncodeReady == 2 ) {
 							bEncode.setEnabled(true);
 						}
 						else {
 							bEncode.setEnabled(false);
-						}
+						}*/
 						imageLabel.setText(
 							res.getString("imgSpaceAvaiable") + " " + 
 							MainWindow.controller.calculateImgEncodeAvaiableSize(
@@ -132,13 +133,15 @@ public class EncodePanel extends JPanel{
 				if ( fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION ) {
 					filePath = fileChooser.getSelectedFile().toString();
 					txtFile.setText(fileChooser.getSelectedFile().toString());
-					bEncodeReady++;
+					
+					/*bEncodeReady++;
 					if ( bEncodeReady == 2 ) {
 						bEncode.setEnabled(true);
 					}
 					else {
 						bEncode.setEnabled(false);
 					}
+					*/
 				} 
 			}
 		});
@@ -217,7 +220,7 @@ public class EncodePanel extends JPanel{
 				}
 				else {
 					lPasswordError.setText("");
-					bEncodeReady++;
+					//bEncodeReady++;
 				}
 			}
 			
@@ -293,7 +296,7 @@ public class EncodePanel extends JPanel{
 				pass1.setText("");
 				pass2.setText("");
 				imageLabel.setText("");
-				bEncode.setEnabled(false);
+				//bEncode.setEnabled(false);
 			}
 		});
 		
