@@ -3,6 +3,7 @@ package tmi.steganojava.mvc.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -20,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -62,6 +64,10 @@ public class EncodePanel extends JPanel{
 	}
 	
 	private void selectFile1Panel() {
+		
+		imgPath = "";
+		filePath = "";
+		
 		JPanel selectFile1Panel = new JPanel(new BorderLayout());
 		selectFile1Panel.setPreferredSize(new Dimension(635, 80));
 		selectFile1Panel.setBorder(BorderFactory.createTitledBorder(res.getString("title1")));
@@ -273,16 +279,29 @@ public class EncodePanel extends JPanel{
 		/////////////
 		bEncode.setEnabled(true);
 		
+		final Component component = this;
+		
 		bEncode.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if ( !checkPass.isSelected() ) {
-					MainWindow.controller.encode(imgPath, filePath, groupAlg.getSelection().getActionCommand());
+				
+				if ( imgPath.length() != 0 && filePath.length() != 0 ) {
+					
+					if ( !checkPass.isSelected() ) {
+						MainWindow.controller.encode(imgPath, filePath, groupAlg.getSelection().getActionCommand());
+					}
+					else {
+						MainWindow.controller.encodeAndEncrypt(imgPath, filePath, groupAlg.getSelection().getActionCommand(), String.valueOf(pass1.getPassword()));
+					}
 				}
 				else {
-					MainWindow.controller.encodeAndEncrypt(imgPath, filePath, groupAlg.getSelection().getActionCommand(), String.valueOf(pass1.getPassword()));
+					JOptionPane.showMessageDialog(component, "Please, fill fields!", "Error", JOptionPane.ERROR_MESSAGE);					
 				}
+				
+				
+				
+				
 			}
 		});
 		
