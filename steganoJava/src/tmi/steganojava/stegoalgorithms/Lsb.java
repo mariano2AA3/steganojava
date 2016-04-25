@@ -202,8 +202,8 @@ public class Lsb implements StegoAlgorithm {
 		// -56 = 24 bits for the file size + 32 bits for the mime (4 char)
 		// / 8.0f    = Bytes
 		// / 1024.0f = KBytes
-		// / 1024.0f = MBytes
-		return ((((img.getHeight() * img.getWidth() * 3)-56 / 8.0f) /1024.0f) /1024.0f);
+		float availableSpace = ((((img.getHeight() * img.getWidth() * 3) - 56) / 8.0f) /1024.0f);
+		return (availableSpace < 0.0)?0:availableSpace;
 	}
 
 }

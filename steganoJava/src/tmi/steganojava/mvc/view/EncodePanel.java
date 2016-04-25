@@ -101,7 +101,7 @@ public class EncodePanel extends JPanel{
 							MainWindow.controller.calculateImgEncodeAvaiableSize(
 									imgPath, groupAlg.getSelection().getActionCommand()
 							) 
-							+ " MB"
+							+ " KB"
 						);
 					}
 				} 

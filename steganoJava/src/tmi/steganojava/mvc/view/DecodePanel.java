@@ -119,13 +119,11 @@ public class DecodePanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				pass1.setText("");
-				if ( pass1.getPassword().length == 0 ) {
-					
+				if ( pass1.getPassword().length == 0 ) {	
 					MainWindow.controller.decode(txtFile.getText(), groupAlg.getSelection().getActionCommand());
-	
-				}else {
-					//MainWindow.controller.decodeAndEncrypt(imgPath, filePath, groupAlg.getSelection().getActionCommand(), String.valueOf(pass1.getPassword()));
+				}
+				else {
+					MainWindow.controller.DecryptAndDecode(txtFile.getText(), groupAlg.getSelection().getActionCommand(), String.valueOf(pass1.getPassword()));
 				}
 				
 				

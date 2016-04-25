@@ -11,12 +11,10 @@ import tmi.steganojava.utils.Pair;
 import javax.imageio.ImageIO;
 
 import tmi.steganojava.exceptions.ImgFormatException;
-//import tmi.steganojava.mvc.view.MainWindow;
 import tmi.steganojava.mvc.view.View;
 import tmi.steganojava.stegoalgorithms.Lsb;
 import tmi.steganojava.utils.ReadWriteFile;
 import tmi.steganojava.utils.Security;
-import tmi.steganojava.utils.Security.InvalidPasswordException;
 
 public class Controller {
 	
@@ -139,21 +137,19 @@ public class Controller {
 			String decodedFileString = "DecodedFile";
 			String decodedFileMime   = "";
 			for(int i = 0; i < chares.length; i++){
-				if(chares[i]!=' '){
-					decodedFileMime = decodedFileMime.concat(""+chares[i]);
+				if(chares[i] != ' '){
+					decodedFileMime = decodedFileMime.concat("" + chares[i]);
 				}
 			}
 			decodedFileString = decodedFileString.concat(".").concat(decodedFileMime);
 			
 			if (password != null) {
-				try{
+				System.out.println("|- decrypting file...");
+				try {
 					fileBytes = Security.decrypt(pair.getLeft(), password);
-				}
-				catch (InvalidPasswordException e){
+				}catch(Exception e){
 					this.view.showErrorMsg("Error: Invalid password.");
-				}
-				catch (Exception e){
-					this.view.showErrorMsg("Error to decrypt file.");
+					return;
 				}
 			}
 			else {
@@ -189,6 +185,12 @@ public class Controller {
 			System.out.println(" |- reading file... ");
 			fileBytes   = this.rwFile.readFile(filePath);
 			
+			// If user check PasswordChechBox, then file byte array will be encrypted...
+			if ( password != null ) {
+				System.out.println("|- encrypting file...");
+				fileBytes = Security.encrypt(fileBytes, password);
+			}
+			
 			mime = this.getFileExtention(filePath);			
 			for(int i = 0; i < 4;i++){
 				if(i<mime.length()){
@@ -202,17 +204,6 @@ public class Controller {
 			if ( this.calculateImgEncodeAvaiableSize(imgPath, alg) * 1024 >= fileBytes.length ) {
 				System.out.println(" |- Encoding file: " + filePath + " in image: " + imgPath);
 				System.out.println(" |- encoding using algotithm: " + alg);
-				
-				// If user check PasswordChechBox, then file byte array will be encrypted...
-				if ( password != null ) {
-					try {
-						System.out.println("|- encrypting file using password");
-						fileBytes = Security.encrypt(fileBytes, password);
-					}
-					catch(Exception e){
-						this.view.showErrorMsg("Error to encrypt file using password.");
-					}
-				}
 				
 				switch (alg) {
 		
