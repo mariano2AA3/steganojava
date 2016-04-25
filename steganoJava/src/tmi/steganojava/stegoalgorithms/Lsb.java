@@ -15,14 +15,13 @@ public class Lsb implements StegoAlgorithm {
 		int i = 0;											// Count
 		boolean[] bits = new boolean[24+(input*8)];			// For encode: 	1 - The file size   = 24 bits
 															//				2 - The file + mime = input * 8 bits
-		
 		// Now we represent the file size in 24 bits
 		i = 23;
 		while(i >= 0){
 			bits[i] = (input & (1 << i)) != 0;
 			i--;
 		}
-	    
+		
 		// Then we transcript the file in bytes into bits
 		i = 0;
 		while(i < fileBytes.length){
@@ -36,7 +35,7 @@ public class Lsb implements StegoAlgorithm {
 			bits[(i*8)+7+24] = (((fileBytes[i])) & 0x1<<0)>>0 != 0;
 			i++;
 	    }
-	    
+
 		// After that we do the same with the mime type of the file
 		i = 0;
 		while(i < 4){
@@ -50,7 +49,7 @@ public class Lsb implements StegoAlgorithm {
 	    	bits[((fileBytes.length+i)*8)+24+7] = (((extension[i])) & 0x1<<0)>>0 != 0;
 	    	i++;
 	    }
-	    
+		
 		// Finally we encode all the bits array into the image. For that we change the least significant bit
 		// of the 3 components (Red, Green and blue) of the pixel.
 		// For encode a byte (8bits) we use 3 pixels (3 * 3 = 9 bits). The final bit in the third pixel isn't used.
@@ -70,14 +69,14 @@ public class Lsb implements StegoAlgorithm {
 				blue  = color         & 0xFF;
 				
 				if(i<bits.length){
-					red = red | (((bits[i]) ? 1 : 0) & 0x1<<0);
+					red = (red & ~(0x1<<0)) | (((bits[i]) ? 1 : 0) & 0x1<<0);
 					count++;
 					i++;
-					green = green | (((bits[i]) ? 1 : 0) & 0x1<<0);
+					green = (green & ~(0x1<<0)) | (((bits[i]) ? 1 : 0) & 0x1<<0);
 					i++;
 					count++;
 					if(count<8){
-						blue = blue | (((bits[i]) ? 1 : 0) & 0x1<<0);
+						blue = (blue & ~(0x1<<0)) | (((bits[i]) ? 1 : 0) & 0x1<<0);
 						i++;
 						count++;
 					}else{
@@ -91,6 +90,7 @@ public class Lsb implements StegoAlgorithm {
 				yPixel++;
 			}
 			xPixel++;
+			yPixel = 0;
 		}
 	    return img;
 	}
@@ -126,13 +126,14 @@ public class Lsb implements StegoAlgorithm {
 				}else{
 					count = 0;
 				}
-				////////
-				yPixel++;
+
+				yPixel++;	
 			}
 			if(pos!=24){
 				xPixel++;
 			}
 		}
+		
 		
 		// Now we transform the boolean array into a integer
 		int n = 0;
@@ -143,44 +144,46 @@ public class Lsb implements StegoAlgorithm {
 		}	
 
 		// And then we start to read from 0 to hiddenFile.size into a byte[] array
-		count = 0;
 		i = 0;
+		pos = 0;
 		bits = new boolean[8];
 		byte[] byteExit = new byte[n];
-		byte b;
-		while(xPixel < secretImg.getWidth() && count < n){
-			while(yPixel < secretImg.getHeight() && count < n){
-				color         = secretImg.getRGB(xPixel, yPixel);			
+		byte b;		
+		int leidos = 0;
+		while(xPixel < secretImg.getWidth() && leidos < n){
+			while(yPixel < secretImg.getHeight() && leidos < n){
+				color     = secretImg.getRGB(xPixel, yPixel);			
 				
-				red           = (color >> 16) & 0xFF;					
-				green         = (color >> 8)  & 0xFF;
-				blue          = color         & 0xFF;		
+				red       = (color >> 16) & 0xFF;
+				green     = (color >> 8)  & 0xFF;
+				blue      = color         & 0xFF;
 				
-				red           = red           & 0x1<<0;
-				green         = green         & 0x1<<0;
-				blue          = blue          & 0x1<<0;
+				bits[pos] = (red & 0x1<<0) != 0;
+				pos++;
+	
 				
-				bits[i] = (red != 0);
-				i++;
+				bits[pos] = (green & 0x1<<0) != 0;
+				pos++;
+
 				
-				bits[i] = (green != 0);
-				i++;
-				
-				if(i<8){
-					bits[i]=(blue != 0);
-					i++;
+				if(pos<8){
+					bits[pos] = (blue & 0x1<<0) != 0;
+					pos++;
 				}else{
-					b = (byte)((bits[0]?1<<7:0) + (bits[1]?1<<6:0) + (bits[2]?1<<5:0) + (bits[3]?1<<4:0)   + 
-							   (bits[4]?1<<3:0) + (bits[5]?1<<2:0) + (bits[6]?1<<1:0) + (bits[7]?1<<0:0)   );	
-					byteExit[count] = b;
-					count++;
-				}				
-				i = i % 8;
+					b = (byte)((bits[0]?1<<7:0) + (bits[1]?1<<6:0) + (bits[2]?1<<5:0) + 
+			                (bits[3]?1<<4:0) + (bits[4]?1<<3:0) + (bits[5]?1<<2:0) + 
+			                (bits[6]?1<<1:0) + (bits[7]?1:0));
+					
+					byteExit[leidos] = b;
+					leidos++;
+					pos = 0;
+				}
 				
 				////////
 				yPixel++;
 			}
 			xPixel++;
+			yPixel = 0;
 		}	
 
 		// Here we get the mime of the hidden file
@@ -198,11 +201,12 @@ public class Lsb implements StegoAlgorithm {
 	@Override
 	public float getImgEncodeSpace(BufferedImage img) {
 		// The space for the hidden file in the image is:
-		// (Height * Width * 3) = Number of bits we can use
+		// (Height * Width * 2) = Number of bits we can use (with 3 bits)
+		// + (Height * Width * 2/3) = Number of bits we can use (with 2 bits)
 		// -56 = 24 bits for the file size + 32 bits for the mime (4 char)
 		// / 8.0f    = Bytes
 		// / 1024.0f = KBytes
-		float availableSpace = ((((img.getHeight() * img.getWidth() * 3) - 56) / 8.0f) /1024.0f);
+		float availableSpace = ((((((img.getHeight() * img.getWidth()) * 2) + (((img.getHeight() * img.getWidth()) / 3)*2)) - 56) / 8.0f) /1024.0f);
 		return (availableSpace < 0.0)?0:availableSpace;
 	}
 
