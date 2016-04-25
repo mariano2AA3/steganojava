@@ -90,9 +90,8 @@ public class Security {
 		return output.toByteArray();
 	}
 
-	public static byte[] decrypt(byte[] input, String password)
-			throws InvalidPasswordException, InvalidAESStreamException, IOException {
-		int keyLength = 256;
+	public static byte[] decrypt(byte[] input, String password) throws InvalidPasswordException, InvalidAESStreamException, IOException {
+
 		ByteArrayInputStream in = new ByteArrayInputStream(input);
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		

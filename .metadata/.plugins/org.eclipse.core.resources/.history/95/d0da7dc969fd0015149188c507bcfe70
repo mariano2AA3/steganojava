@@ -1,5 +1,0 @@
-package tmi.steganojava.exceptions;
-
-public class ImgFormatException {
-
-}

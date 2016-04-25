@@ -1,5 +1,0 @@
-package tmi.steganojava.mvc.view;
-
-public interface View {
-
-}

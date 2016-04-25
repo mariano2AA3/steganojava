@@ -1,7 +1,0 @@
-package tmi.steganojava.mvc.view;
-
-import javax.swing.JFrame;
-
-public class MainWindow extends JFrame implements View {
-
-}

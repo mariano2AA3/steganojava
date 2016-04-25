@@ -267,7 +267,8 @@ public class EncodePanel extends JPanel{
 		bEncode = new JButton(res.getString("tabEncode")); 
 		JButton bClean= new JButton(res.getString("clean"));
 		
-		bEncode.setEnabled(false);
+		/////////////
+		bEncode.setEnabled(true);
 		
 		bEncode.addActionListener(new ActionListener() {
 			

@@ -1,5 +1,0 @@
-package tmi.steganojava.stegoalgorithms;
-
-public interface StegoAlgorithm {
-
-}
