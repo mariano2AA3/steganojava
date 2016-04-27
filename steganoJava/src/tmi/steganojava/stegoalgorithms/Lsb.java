@@ -7,91 +7,66 @@ import java.util.Arrays;
 import tmi.steganojava.utils.Pair;
 
 public class Lsb implements StegoAlgorithm {
-	
+	private int fileSize = 24;								// 24 bits for encode the size of the fileBytes
+	private int byteSize = 8;								// 1 Byte = 8 bits
+	private int mimeSize = 4;								// Mime size = 4 chars, 4 bytes
 	
 	@Override
 	public BufferedImage encode(BufferedImage img, byte[] fileBytes,char[] extension) {	
-		int input = fileBytes.length+4;						// File size + Mime (4 char, for example: jpg, txt, docx)
-		int i = 0;											// Count
-		boolean[] bits = new boolean[24+(input*8)];			// For encode: 	1 - The file size   = 24 bits
-															//				2 - The file + mime = input * 8 bits
-		// Now we represent the file size in 24 bits
-		i = 23;
-		while(i >= 0){
+		
+		int input = fileBytes.length+mimeSize;				// File size + Mime (for example: jpg, txt, docx...)
+		int bitsSize = fileSize+(input*byteSize);			// For encode: 	1 - The file size   = 24 bits		
+		boolean[] bits = new boolean[bitsSize];				//              2 - The file + mime = input * 8 bits	
+																					
+		// Now we represent the file size of the fileBytes  + mime size in 24 bits
+		for(int i = fileSize-1; i >= 0; i--){
 			bits[i] = (input & (1 << i)) != 0;
-			i--;
 		}
 		
-		// Then we transcript the file in bytes into bits
-		i = 0;
-		while(i < fileBytes.length){
-	    	bits[i*8+24]     = (((fileBytes[i])) & 0x1<<7)>>7 != 0;
-	    	bits[(i*8)+1+24] = (((fileBytes[i])) & 0x1<<6)>>6 != 0;
-	    	bits[(i*8)+2+24] = (((fileBytes[i])) & 0x1<<5)>>5 != 0;
-	    	bits[(i*8)+3+24] = (((fileBytes[i])) & 0x1<<4)>>4 != 0;
-	    	bits[(i*8)+4+24] = (((fileBytes[i])) & 0x1<<3)>>3 != 0;
-	    	bits[(i*8)+5+24] = (((fileBytes[i])) & 0x1<<2)>>2 != 0;
-	    	bits[(i*8)+6+24] = (((fileBytes[i])) & 0x1<<1)>>1 != 0;
-			bits[(i*8)+7+24] = (((fileBytes[i])) & 0x1<<0)>>0 != 0;
-			i++;
-	    }
+		// Then we transcript the fileBytes into bits
+		for(int i = 0; i < fileBytes.length; i++){
+			for(int j = 0; j < byteSize; j++){
+		    	bits[(i*byteSize)+j+fileSize] = (((fileBytes[i])) & 0x1<<((byteSize-1)-j))>>((byteSize-1)-j) != 0;
+			}
+		}
 
 		// After that we do the same with the mime type of the file
-		i = 0;
-		while(i < 4){
-	    	bits[((fileBytes.length+i)*8)+24]   = (((extension[i])) & 0x1<<7)>>7 != 0;
-	    	bits[((fileBytes.length+i)*8)+24+1] = (((extension[i])) & 0x1<<6)>>6 != 0;
-	    	bits[((fileBytes.length+i)*8)+24+2] = (((extension[i])) & 0x1<<5)>>5 != 0;
-	    	bits[((fileBytes.length+i)*8)+24+3] = (((extension[i])) & 0x1<<4)>>4 != 0;
-	    	bits[((fileBytes.length+i)*8)+24+4] = (((extension[i])) & 0x1<<3)>>3 != 0;
-	    	bits[((fileBytes.length+i)*8)+24+5] = (((extension[i])) & 0x1<<2)>>2 != 0;
-	    	bits[((fileBytes.length+i)*8)+24+6] = (((extension[i])) & 0x1<<1)>>1 != 0;
-	    	bits[((fileBytes.length+i)*8)+24+7] = (((extension[i])) & 0x1<<0)>>0 != 0;
-	    	i++;
-	    }
+		for(int i = 0; i < mimeSize; i++){					// We only encode mimes of 4 chars (.xxxx)
+			for(int j = 0; j < byteSize; j++){
+		    	bits[((fileBytes.length+i)*byteSize)+fileSize+j] = (((extension[i])) & 0x1<<((byteSize-1)-j))>>((byteSize-1)-j) != 0;
+			}
+		}
 		
 		// Finally we encode all the bits array into the image. For that we change the least significant bit
 		// of the 3 components (Red, Green and blue) of the pixel.
 		// For encode a byte (8bits) we use 3 pixels (3 * 3 = 9 bits). The final bit in the third pixel isn't used.
 		// P1.Red    P1.Green    P1.Blue    P2.Red    P2.Green    P2.Blue    P3.Red    P3.Green    P3.Blue
 		//   X          X          X          X          X          X          X          X       Isn's used
-		i = 0;
-		boolean leave = false;
-		int color,red,green,blue,count=0;
-		Color color2;
-		int xPixel = 0,yPixel = 0;
-		while(xPixel < img.getWidth() && !leave){
-			while(yPixel < img.getHeight() && !leave){
+		int color,red,green,blue;
+		int bitsIterator = 0;
+		for(int xPixel = 0; xPixel < img.getWidth() && bitsIterator < bitsSize; xPixel++){
+			for(int yPixel = 0; yPixel < img.getHeight() && bitsIterator < bitsSize; yPixel++){
 				color = img.getRGB(xPixel, yPixel);			
 				
 				red   = (color >> 16) & 0xFF;
 				green = (color >> 8)  & 0xFF;
 				blue  = color         & 0xFF;
+							
+				red =      (red   & ~(0x1<<0)) | (((bits[bitsIterator]) ? 1 : 0) & 0x1<<0);
+				bitsIterator++;
+
+				green =    (green & ~(0x1<<0)) | (((bits[bitsIterator]) ? 1 : 0) & 0x1<<0);
+				bitsIterator++;
+
+				if((bitsIterator%byteSize)!=0){				// The Blue component of the third pixel isn't used.
+					blue = (blue  & ~(0x1<<0)) | (((bits[bitsIterator]) ? 1 : 0) & 0x1<<0);
+					bitsIterator++;
+				}
 				
-				if(i<bits.length){
-					red = (red & ~(0x1<<0)) | (((bits[i]) ? 1 : 0) & 0x1<<0);
-					count++;
-					i++;
-					green = (green & ~(0x1<<0)) | (((bits[i]) ? 1 : 0) & 0x1<<0);
-					i++;
-					count++;
-					if(count<8){
-						blue = (blue & ~(0x1<<0)) | (((bits[i]) ? 1 : 0) & 0x1<<0);
-						i++;
-						count++;
-					}else{
-						count = 0;
-					}
-					color2 =  new Color(red, green,blue);
-					img.setRGB(xPixel, yPixel, color2.getRGB());
-				}else{
-					leave = true;
-				}	
-				yPixel++;
+				img.setRGB(xPixel, yPixel, new Color(red, green, blue).getRGB());	
 			}
-			xPixel++;
-			yPixel = 0;
 		}
+		
 	    return img;
 	}
 	
@@ -99,84 +74,71 @@ public class Lsb implements StegoAlgorithm {
 	public Pair<byte[], Character[]> decode(BufferedImage secretImg) {	
 		int color,red,green,blue;
 		
-		// Here we get the size of the hidden file (boolean bits[])
-		int pos=0,count = 0;
-		boolean[] bits = new boolean[24];
+		// Here we get the size of the hidden file (boolean bits[])		
 		int xPixel=0,yPixel=0;
-		while(xPixel < secretImg.getWidth() && pos < 24){
-			while(yPixel < secretImg.getHeight() && pos < 24){
+		int bitsIterator = 0;
+		boolean[] bits = new boolean[fileSize];
+		while(xPixel < secretImg.getWidth() && bitsIterator < fileSize){
+			while(yPixel < secretImg.getHeight() && bitsIterator < fileSize){
 				color     = secretImg.getRGB(xPixel, yPixel);			
 				
 				red       = (color >> 16) & 0xFF;
 				green     = (color >> 8)  & 0xFF;
 				blue      = color         & 0xFF;
 				
-				bits[pos] = (red & 0x1<<0) != 0;
-				pos++;
-				count++;
+				bits[bitsIterator] =     (red   & 0x1<<0) != 0;
+				bitsIterator++;
+				bits[bitsIterator] =     (green & 0x1<<0) != 0;
+				bitsIterator++;
 				
-				bits[pos] = (green & 0x1<<0) != 0;
-				pos++;
-				count++;
-				
-				if(count<8){
-					bits[pos] = (blue & 0x1<<0) != 0;
-					pos++;
-					count++;
-				}else{
-					count = 0;
+				if((bitsIterator%byteSize)!=0){				// The Blue component of the third pixel isn't used.
+					bits[bitsIterator] = (blue  & 0x1<<0) != 0;
+					bitsIterator++;
 				}
 
 				yPixel++;	
 			}
-			if(pos!=24){
+			if(bitsIterator!=fileSize){
 				xPixel++;
 			}
 		}
 		
 		
 		// Now we transform the boolean array into a integer
-		int n = 0;
-		int i = bits.length-1;
-		while(i >= 0){
-			n = (n << 1) + (bits[i] ? 1 : 0);
-			i--;
-		}	
+		int fileBytesSize = 0;
+		for(int i = fileSize-1; i >= 0; i--){
+			fileBytesSize = (fileBytesSize << 1) + (bits[i] ? 1 : 0);
+		}
 
-		// And then we start to read from 0 to hiddenFile.size into a byte[] array
-		i = 0;
-		pos = 0;
-		bits = new boolean[8];
-		byte[] byteExit = new byte[n];
-		byte b;		
-		int leidos = 0;
-		while(xPixel < secretImg.getWidth() && leidos < n){
-			while(yPixel < secretImg.getHeight() && leidos < n){
+		// And then we start to read from 0 to hiddenFile.size+mimeSize into a byte[] array
+		byte b;	
+		bitsIterator = 0;
+		int readedBytes = 0;
+		bits = new boolean[byteSize];
+		byte[] byteExit = new byte[fileBytesSize];		
+		while(xPixel < secretImg.getWidth() && readedBytes < fileBytesSize){
+			while(yPixel < secretImg.getHeight() && readedBytes < fileBytesSize){
 				color     = secretImg.getRGB(xPixel, yPixel);			
 				
 				red       = (color >> 16) & 0xFF;
 				green     = (color >> 8)  & 0xFF;
 				blue      = color         & 0xFF;
 				
-				bits[pos] = (red & 0x1<<0) != 0;
-				pos++;
-	
+				bits[bitsIterator] =     (red   & 0x1<<0) != 0;
+				bitsIterator++;			
+				bits[bitsIterator] =     (green & 0x1<<0) != 0;
+				bitsIterator++;
 				
-				bits[pos] = (green & 0x1<<0) != 0;
-				pos++;
-
-				
-				if(pos<8){
-					bits[pos] = (blue & 0x1<<0) != 0;
-					pos++;
+				if((bitsIterator%byteSize)!=0){				// The Blue component of the third pixel isn't used.
+					bits[bitsIterator] = (blue  & 0x1<<0) != 0;
+					bitsIterator++;
 				}else{
-					b = (byte)((bits[0]?1<<7:0) + (bits[1]?1<<6:0) + (bits[2]?1<<5:0) + 
-			                (bits[3]?1<<4:0) + (bits[4]?1<<3:0) + (bits[5]?1<<2:0) + 
-			                (bits[6]?1<<1:0) + (bits[7]?1:0));
-					
-					byteExit[leidos] = b;
-					leidos++;
-					pos = 0;
+					// When we have 8 bits we should create the byte:
+					b = (byte)((bits[0]?1<<7:0) + (bits[1]?1<<6:0) + (bits[2]?1<<5:0) + (bits[3]?1<<4:0) + 
+							   (bits[4]?1<<3:0) + (bits[5]?1<<2:0) + (bits[6]?1<<1:0) + (bits[7]?1<<0:0)   );		
+					byteExit[readedBytes] = b;
+					readedBytes++;
+					bitsIterator = 0;
 				}
 				
 				////////
@@ -187,15 +149,13 @@ public class Lsb implements StegoAlgorithm {
 		}	
 
 		// Here we get the mime of the hidden file
-		Character[] salida = new Character[4];
-		if(byteExit[byteExit.length-4]!=0)salida[0] = (char)byteExit[byteExit.length-4];
-		if(byteExit[byteExit.length-3]!=0)salida[1] = (char)byteExit[byteExit.length-3];
-		if(byteExit[byteExit.length-2]!=0)salida[2] = (char)byteExit[byteExit.length-2];
-		if(byteExit[byteExit.length-1]!=0)salida[3] = (char)byteExit[byteExit.length-1];
+		Character[] exit = new Character[mimeSize];
+		for(int i = 1; i <= mimeSize; i++){
+			if(byteExit[fileBytesSize-i]!=0)exit[mimeSize-i] = (char)byteExit[fileBytesSize-i];
+		}
 		
-		// And now we remove the 4 last positions of the byte[] array (the mime) 
-		byte[] newArray = Arrays.copyOfRange(byteExit, 0, byteExit.length-4);		
-		return new Pair<byte[], Character[]>(newArray, salida);
+		// And now we remove the 4 last positions of the byte[] array (the mime) 	
+		return new Pair<byte[], Character[]>(Arrays.copyOfRange(byteExit, 0, fileBytesSize-mimeSize), exit);
 	}
 
 	@Override
