@@ -34,6 +34,7 @@ public class Controller {
 		
 		// Add supported image format extentions
 		this.imgFormatAdmitted.add("bmp");
+		this.imgFormatAdmitted.add("png");
 	}
 		
 	/**
