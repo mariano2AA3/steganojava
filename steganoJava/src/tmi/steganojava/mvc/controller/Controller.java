@@ -23,9 +23,12 @@ public class Controller {
 	private static Lsb lsbInstanceLsb = null;	
 	private ArrayList<String> imgFormatAdmitted;
 	private View view;
+	private Security cypher;
 	
 	
 	public Controller(View w) {
+		
+		this.cypher = new Security();
 	
 		this.rwFile 	       = new ReadWriteFile();
 		this.imgFormatAdmitted = new ArrayList<String>();
@@ -147,7 +150,7 @@ public class Controller {
 			if (password != null) {
 				System.out.println("|- decrypting file...");
 				try {
-					fileBytes = Security.decrypt(pair.getLeft(), password);
+					fileBytes = this.cypher.decrypt(pair.getLeft(), password);
 				}catch(Exception e){
 					this.view.showErrorMsg("Error: Invalid password.");
 					return;
@@ -189,7 +192,7 @@ public class Controller {
 			// If user check PasswordChechBox, then file byte array will be encrypted...
 			if ( password != null ) {
 				System.out.println("|- encrypting file...");
-				fileBytes = Security.encrypt(fileBytes, password);
+				fileBytes = this.cypher.encrypt(fileBytes, password);
 			}
 			
 			mime = this.getFileExtention(filePath);			

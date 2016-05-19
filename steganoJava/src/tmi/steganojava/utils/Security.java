@@ -6,7 +6,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class Security {
 	
-    public static byte[] encrypt(byte[] value, String password) {
+    public byte[] encrypt(byte[] value, String password) {
     	String initVector = "RandomInitVector";
     	password = String.format("%1$-16s", password);
         try {
@@ -26,7 +26,7 @@ public class Security {
         return null;
     }
 
-    public static byte[] decrypt(byte[] encrypted, String password) throws Exception {
+    public byte[] decrypt(byte[] encrypted, String password) throws Exception {
     	String initVector = "RandomInitVector";
     	password = String.format("%1$-16s", password);
             IvParameterSpec iv = new IvParameterSpec(initVector.getBytes());

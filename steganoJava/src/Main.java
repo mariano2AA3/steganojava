@@ -5,6 +5,8 @@ import tmi.steganojava.mvc.view.MainWindow;
 import tmi.steganojava.resoruces.Resources_en;
 
 public class Main {
+	
+	public static Controller controller;
 
 	public static void main(String[] args) {
 		
@@ -12,7 +14,7 @@ public class Main {
 		final MainWindow w = new MainWindow(new Resources_en());
 		
 		// Instanciate Controller
-		Controller controller = new Controller(w);
+		controller = new Controller(w);
 		
 		w.registerController(controller);
 		

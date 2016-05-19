@@ -21,6 +21,11 @@ public class MainWindow extends JFrame implements View {
 	private Dimension dimension;
 	private Resources_en resources;
 	
+	private JTabbedPane pane;
+	private EncodePanel encode;
+	private DecodePanel decode;
+	private CreditsPanel credits;
+	
 	public MainWindow(Resources_en res) {
 		super();
 		
@@ -28,10 +33,11 @@ public class MainWindow extends JFrame implements View {
 		this.dimension       = new Dimension(650, 490);
 		this.resources 		 = res;
 		JLabel label         = new JLabel(res.getString("title"));
-		JTabbedPane pane     = new JTabbedPane();
-		EncodePanel encode   = new EncodePanel(res);
-		DecodePanel decode   = new DecodePanel(res);
-		CreditsPanel credits = new CreditsPanel(res);
+		
+		pane     = new JTabbedPane();
+		encode   = new EncodePanel(res);
+		decode   = new DecodePanel(res);
+		credits = new CreditsPanel(res);
 		
 	/* Set variables */
 		setResizable(false);

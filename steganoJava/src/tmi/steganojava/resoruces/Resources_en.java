@@ -25,7 +25,7 @@ public class Resources_en extends ResourceBundle {
 		if (key.equals("usePass")) return "Use password";
 		if (key.equals("selectAlg")) return "Select algorithm";
 		if (key.equals("alg1")) return "LSB";
-		if (key.equals("alg2")) return "FilterFirst";
+		if (key.equals("alg2")) return "FilterFirst (unavailable)";
         if (key.equals("accept")) return "Accept";
         if (key.equals("cancel")) return "Cancel";
         if (key.equals("clean")) return "Clean";
