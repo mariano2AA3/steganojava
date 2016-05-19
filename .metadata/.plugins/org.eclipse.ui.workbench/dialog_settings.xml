@@ -16,6 +16,12 @@
 		<item value="15" key="DIALOG_Y_ORIGIN"/>
 		<item value="408" key="DIALOG_X_ORIGIN"/>
 	</section>
+	<section name="NewWizardAction">
+		<item value="com.objectaid.uml.new.classdiagram" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="com.objectaid.uml.new"/>
+		</list>
+	</section>
 	<section name="ImportExportAction">
 	</section>
 </section>
