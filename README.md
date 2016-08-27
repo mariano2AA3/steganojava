@@ -5,6 +5,6 @@ Tool designed by students in the Master of Computer Engineering at the Universid
 ## Authors:
    
   * Jorge Casas Hernán
-  * Mariano Hernández García
+  * Mariano Hernández García (https://github.com/mariano2AA3)
   * Alberto Lorente Sánchez
                               
